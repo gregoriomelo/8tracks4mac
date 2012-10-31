@@ -17,6 +17,7 @@
 		F2CABC0B1641C6F200ADE23B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2CABBEB1641C6F100ADE23B /* Cocoa.framework */; };
 		F2CABC131641C6F200ADE23B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F2CABC111641C6F200ADE23B /* InfoPlist.strings */; };
 		F2CABC161641C6F200ADE23B /* _tracks4macTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F2CABC151641C6F200ADE23B /* _tracks4macTests.m */; };
+		F2CABC281641CDDB00ADE23B /* API_Key.plist in Resources */ = {isa = PBXBuildFile; fileRef = F2CABC271641CDDB00ADE23B /* API_Key.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		F2CABC121641C6F200ADE23B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F2CABC141641C6F200ADE23B /* _tracks4macTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _tracks4macTests.h; sourceTree = "<group>"; };
 		F2CABC151641C6F200ADE23B /* _tracks4macTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _tracks4macTests.m; sourceTree = "<group>"; };
+		F2CABC271641CDDB00ADE23B /* API_Key.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = API_Key.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 				F2CABBF71641C6F100ADE23B /* main.m */,
 				F2CABBF91641C6F100ADE23B /* 8tracks4mac-Prefix.pch */,
 				F2CABBFA1641C6F100ADE23B /* Credits.rtf */,
+				F2CABC271641CDDB00ADE23B /* API_Key.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -228,6 +231,7 @@
 				F2CABBF61641C6F100ADE23B /* InfoPlist.strings in Resources */,
 				F2CABBFC1641C6F100ADE23B /* Credits.rtf in Resources */,
 				F2CABC021641C6F200ADE23B /* MainMenu.xib in Resources */,
+				F2CABC281641CDDB00ADE23B /* API_Key.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,6 +451,7 @@
 				F2CABC1B1641C6F200ADE23B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F2CABC1C1641C6F200ADE23B /* Build configuration list for PBXNativeTarget "8tracks4macTests" */ = {
 			isa = XCConfigurationList;
@@ -455,6 +460,7 @@
 				F2CABC1E1641C6F200ADE23B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
