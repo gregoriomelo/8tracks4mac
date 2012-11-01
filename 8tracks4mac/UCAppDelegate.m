@@ -7,12 +7,21 @@
 //
 
 #import "UCAppDelegate.h"
+#import "UCRemoteCall.h"
 
 @implementation UCAppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     // Insert code here to initialize your application
+}
+
+- (IBAction)push:(id)sender
+{
+    NSString *mixes = [[[UCRemoteCall alloc] init] mixes];
+    
+    NSLog(@"pushed");
+    [_message setStringValue:mixes];
 }
 
 @end
