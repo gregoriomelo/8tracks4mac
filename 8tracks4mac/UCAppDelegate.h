@@ -13,6 +13,7 @@
 @property (assign) IBOutlet NSWindow *window;
 @property (weak) IBOutlet NSTextField *message;
 
--(IBAction)push:(id)sender;
+- (IBAction)push:(id)sender;
+- (IBAction)playToken:(id)sender;
 
 @end

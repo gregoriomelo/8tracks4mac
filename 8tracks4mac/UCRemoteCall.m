@@ -13,9 +13,22 @@
 
 -(NSString *)mixes
 {
-    NSString *mixesURL = @"http://8tracks.com/sets/new.xml";
+    NSString *mixesURL = @"http://8tracks.com/mixes.xml";
+    
+    return [self request:mixesURL];
+}
+
+-(NSString *)playToken
+{
+    NSString *playToken = @"http://8tracks.com/sets/new.xml";
+    
+    return [self request:playToken];
+}
+
+- (NSString *)request:(NSString *)url
+{
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:mixesURL]];
+    [request setURL:[NSURL URLWithString:url]];
     [request setHTTPMethod:@"POST"];
     
     [request addValue:[UCAPIKeyReader key] forHTTPHeaderField: @"X-Api-Key"];
@@ -25,7 +38,6 @@
     NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&error];
     NSString *result = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
     NSLog(@"Response Code: %ld", [urlResponse statusCode]);
-    
     return result;
 }
 

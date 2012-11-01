@@ -11,5 +11,6 @@
 @interface UCRemoteCall : NSObject
 
 -(NSString *)mixes;
+-(NSString *)playToken;
 
 @end

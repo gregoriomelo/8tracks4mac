@@ -20,8 +20,14 @@
 {
     NSString *mixes = [[[UCRemoteCall alloc] init] mixes];
     
-    NSLog(@"pushed");
     [_message setStringValue:mixes];
+}
+
+- (IBAction)playToken:(id)sender
+{
+    NSString *playToken = [[[UCRemoteCall alloc] init] playToken];
+    
+    [_message setStringValue:playToken];
 }
 
 @end
