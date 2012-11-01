@@ -18,6 +18,8 @@
 		F2CABC131641C6F200ADE23B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F2CABC111641C6F200ADE23B /* InfoPlist.strings */; };
 		F2CABC161641C6F200ADE23B /* _tracks4macTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F2CABC151641C6F200ADE23B /* _tracks4macTests.m */; };
 		F2CABC281641CDDB00ADE23B /* API_Key.plist in Resources */ = {isa = PBXBuildFile; fileRef = F2CABC271641CDDB00ADE23B /* API_Key.plist */; };
+		F2CABC2C1641CE4700ADE23B /* UCAPIKeyReader.m in Sources */ = {isa = PBXBuildFile; fileRef = F2CABC2B1641CE4700ADE23B /* UCAPIKeyReader.m */; };
+		F2CABC301641CEAA00ADE23B /* UCAPIKeyReaderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = F2CABC2F1641CEAA00ADE23B /* UCAPIKeyReaderTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,10 @@
 		F2CABC141641C6F200ADE23B /* _tracks4macTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _tracks4macTests.h; sourceTree = "<group>"; };
 		F2CABC151641C6F200ADE23B /* _tracks4macTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _tracks4macTests.m; sourceTree = "<group>"; };
 		F2CABC271641CDDB00ADE23B /* API_Key.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = API_Key.plist; sourceTree = "<group>"; };
+		F2CABC2A1641CE4700ADE23B /* UCAPIKeyReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UCAPIKeyReader.h; sourceTree = "<group>"; };
+		F2CABC2B1641CE4700ADE23B /* UCAPIKeyReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UCAPIKeyReader.m; sourceTree = "<group>"; };
+		F2CABC2E1641CEAA00ADE23B /* UCAPIKeyReaderTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UCAPIKeyReaderTest.h; sourceTree = "<group>"; };
+		F2CABC2F1641CEAA00ADE23B /* UCAPIKeyReaderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UCAPIKeyReaderTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +125,8 @@
 				F2CABBFD1641C6F100ADE23B /* UCAppDelegate.h */,
 				F2CABBFE1641C6F100ADE23B /* UCAppDelegate.m */,
 				F2CABC001641C6F200ADE23B /* MainMenu.xib */,
+				F2CABC2A1641CE4700ADE23B /* UCAPIKeyReader.h */,
+				F2CABC2B1641CE4700ADE23B /* UCAPIKeyReader.m */,
 				F2CABBF21641C6F100ADE23B /* Supporting Files */,
 			);
 			path = 8tracks4mac;
@@ -142,6 +150,8 @@
 			children = (
 				F2CABC141641C6F200ADE23B /* _tracks4macTests.h */,
 				F2CABC151641C6F200ADE23B /* _tracks4macTests.m */,
+				F2CABC2E1641CEAA00ADE23B /* UCAPIKeyReaderTest.h */,
+				F2CABC2F1641CEAA00ADE23B /* UCAPIKeyReaderTest.m */,
 				F2CABC0F1641C6F200ADE23B /* Supporting Files */,
 			);
 			path = 8tracks4macTests;
@@ -268,6 +278,7 @@
 			files = (
 				F2CABBF81641C6F100ADE23B /* main.m in Sources */,
 				F2CABBFF1641C6F100ADE23B /* UCAppDelegate.m in Sources */,
+				F2CABC2C1641CE4700ADE23B /* UCAPIKeyReader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,6 +287,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2CABC161641C6F200ADE23B /* _tracks4macTests.m in Sources */,
+				F2CABC301641CEAA00ADE23B /* UCAPIKeyReaderTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

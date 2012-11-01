@@ -24,9 +24,4 @@
     [super tearDown];
 }
 
-- (void)testExample
-{
-    STFail(@"Unit tests are not implemented yet in 8tracks4macTests");
-}
-
 @end
