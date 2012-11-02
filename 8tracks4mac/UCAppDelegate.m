@@ -30,4 +30,10 @@
     [_message setStringValue:playToken];
 }
 
+- (IBAction)findMixes:(id)sender {
+    NSString *mixes = [[[UCRemoteCall alloc] init] findMixesWithTag:[_tag1 stringValue] andTag:[_tag2 stringValue]];
+
+    [_message setStringValue:mixes];
+}
+
 @end

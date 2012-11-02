@@ -12,5 +12,6 @@
 
 -(NSString *)mixes;
 -(NSString *)playToken;
+-(NSString *)findMixesWithTag:(NSString *)tag1 andTag:(NSString *)tag2;
 
 @end
