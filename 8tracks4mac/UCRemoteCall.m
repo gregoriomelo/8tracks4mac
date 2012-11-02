@@ -20,9 +20,9 @@
 
 -(NSString *)playToken
 {
-    NSString *playToken = @"http://8tracks.com/sets/new.xml";
+    NSString *playTokenURL = @"http://8tracks.com/sets/new.xml";
     
-    return [self request:playToken];
+    return [self request:playTokenURL];
 }
 
 - (NSString *)request:(NSString *)url
@@ -32,6 +32,7 @@
     [request setHTTPMethod:@"POST"];
     
     [request addValue:[UCAPIKeyReader key] forHTTPHeaderField: @"X-Api-Key"];
+    [request addValue:@"2" forHTTPHeaderField: @"X-Api-Version"];
     
     NSHTTPURLResponse* urlResponse = nil;
     NSError *error = [[NSError alloc] init];
