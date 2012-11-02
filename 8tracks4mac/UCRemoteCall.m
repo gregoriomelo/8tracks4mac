@@ -1,6 +1,8 @@
 #import "UCRemoteCall.h"
 #import "UCAPIKeyReader.h"
 #import "TBXML.h"
+#import "RXMLElement.h"
+#import "UCMix.h"
 
 @implementation UCRemoteCall
 
@@ -8,16 +10,24 @@
 {
     NSString *mixesURL = @"http://8tracks.com/mixes.xml";
 
-    NSData *response = [self request:mixesURL];
+    RXMLElement *xmlRoot = [RXMLElement elementFromXMLData:[self requestFor:mixesURL]];
+    RXMLElement *mixesTag = [xmlRoot child:@"mixes"];
+    NSArray *xmlMixes = [mixesTag children:@"mix"];
 
-    return [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
+
+    NSMutableArray *mixes = [NSMutableArray array];
+    [xmlMixes enumerateObjectsUsingBlock:^(id xmlMix, NSUInteger index, BOOL *stop) {
+        [mixes addObject:[self fromXML:xmlMix]];
+    }];
+
+    return [NSString stringWithFormat:@"%d", [[mixes objectAtIndex:0] id]];
 }
 
 -(NSString *)playToken
 {
     NSString *playTokenURL = @"http://8tracks.com/sets/new.xml";
 
-    NSData *response = [self request:playTokenURL];
+    NSData *response = [self requestFor:playTokenURL];
     TBXML *xml = [TBXML newTBXMLWithXMLData:response error:nil];
     TBXMLElement *playToken = [TBXML childElementNamed:@"play-token" parentElement:xml.rootXMLElement];
 
@@ -30,12 +40,24 @@
 
     NSString *requestURL = [NSString stringWithFormat:@"%@%@", mixesURL, [self encode:[NSString stringWithFormat:@"%@+%@", tag1, tag2]]];
 
-    NSData *response = [self request:requestURL];
+    NSData *response = [self requestFor:requestURL];
 
     return [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
 }
 
-- (NSData *)request:(NSString *)url
+- (UCMix *)fromXML:(id)mix
+{
+    UCMix *aMix = [[UCMix alloc] init];
+
+    [aMix setId:[mix child:@"id"].textAsInt];
+    [aMix setDescription:[mix child:@"description"].text];
+    [aMix setName:[mix child:@"name"].text];
+    [aMix setSlug:[mix child:@"slug"].text];
+    [aMix setTimesPlayed:[mix child:@"name"].textAsInt];
+    return aMix;
+}
+
+- (NSData *)requestFor:(NSString *)url
 {
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setURL:[NSURL URLWithString:url]];
@@ -56,8 +78,8 @@
 - (NSString *)encode:(NSString *)url{
     NSMutableString * output = [NSMutableString string];
     const unsigned char * source = (const unsigned char *)[url UTF8String];
-    int sourceLen = strlen((const char *)source);
-    for (int i = 0; i < sourceLen; ++i) {
+    long sourceLen = strlen((const char *)source);
+    for (long i = 0; i < sourceLen; ++i) {
         const unsigned char thisChar = source[i];
         if (thisChar == ' '){
             [output appendString:@"+"];

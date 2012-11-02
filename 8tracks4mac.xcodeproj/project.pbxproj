@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		5DE8A00C21E39668FD500092 /* UCMix.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE8A56754296299884A4CA8 /* UCMix.m */; };
+		5DE8A4A7585276068E2383E6 /* RXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE8AC7658A6908B93650E26 /* RXMLElement.m */; };
+		5DE8A65433A6B969F942C7A7 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DE8AF54A29F072BF4C11202 /* libz.dylib */; };
+		5DE8A78BA6182B9F7C109A38 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DE8A2BCA30D460A76F3D2F9 /* libxml2.dylib */; };
+		5DE8A892F179E69F38E9AC5F /* UCMixCoverImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE8ABA0ECF9C1277A3F4C18 /* UCMixCoverImages.m */; };
 		C178631A4B2BE7188707AD5C /* TBXML.m in Sources */ = {isa = PBXBuildFile; fileRef = C1786749A866A074514A6BD7 /* TBXML.m */; };
 		F2CABBEC1641C6F100ADE23B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2CABBEB1641C6F100ADE23B /* Cocoa.framework */; };
 		F2CABBF61641C6F100ADE23B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F2CABBF41641C6F100ADE23B /* InfoPlist.strings */; };
@@ -38,8 +42,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5DE8A156CDB71D8970D745EE /* UCMixCoverImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UCMixCoverImages.h; sourceTree = "<group>"; };
+		5DE8A2BCA30D460A76F3D2F9 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		5DE8A56754296299884A4CA8 /* UCMix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UCMix.m; sourceTree = "<group>"; };
+		5DE8A79E628B17FC3E1ACB96 /* RXMLElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RXMLElement.h; path = RaptureXML/RXMLElement.h; sourceTree = "<group>"; };
+		5DE8ABA0ECF9C1277A3F4C18 /* UCMixCoverImages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UCMixCoverImages.m; sourceTree = "<group>"; };
+		5DE8AC7658A6908B93650E26 /* RXMLElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RXMLElement.m; path = RaptureXML/RXMLElement.m; sourceTree = "<group>"; };
 		5DE8AD7E531AC9B9087C5E23 /* UCMix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UCMix.h; sourceTree = "<group>"; };
+		5DE8AF54A29F072BF4C11202 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		C17863604E2BCBBFD40CD218 /* TBXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TBXML.h; path = "TBXML-Headers/TBXML.h"; sourceTree = "<group>"; };
 		C1786749A866A074514A6BD7 /* TBXML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TBXML.m; path = "TBXML-Code/TBXML.m"; sourceTree = "<group>"; };
 		F2CABBE71641C6F100ADE23B /* 8tracks4mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 8tracks4mac.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,6 +89,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2CABBEC1641C6F100ADE23B /* Cocoa.framework in Frameworks */,
+				5DE8A65433A6B969F942C7A7 /* libz.dylib in Frameworks */,
+				5DE8A78BA6182B9F7C109A38 /* libxml2.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +107,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5DE8ADD4276BA6C896C70F1B /* RaptureXML */ = {
+			isa = PBXGroup;
+			children = (
+				5DE8A79E628B17FC3E1ACB96 /* RXMLElement.h */,
+				5DE8AC7658A6908B93650E26 /* RXMLElement.m */,
+			);
+			path = RaptureXML;
+			sourceTree = "<group>";
+		};
 		C1786B1C259C6D5B7609B691 /* TBXML */ = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +134,7 @@
 				F2CABBEA1641C6F100ADE23B /* Frameworks */,
 				F2CABBE81641C6F100ADE23B /* Products */,
 				C1786B1C259C6D5B7609B691 /* TBXML */,
+				5DE8ADD4276BA6C896C70F1B /* RaptureXML */,
 			);
 			sourceTree = "<group>";
 		};
@@ -131,6 +153,8 @@
 				F2CABBEB1641C6F100ADE23B /* Cocoa.framework */,
 				F2CABC091641C6F200ADE23B /* SenTestingKit.framework */,
 				F2CABBED1641C6F100ADE23B /* Other Frameworks */,
+				5DE8AF54A29F072BF4C11202 /* libz.dylib */,
+				5DE8A2BCA30D460A76F3D2F9 /* libxml2.dylib */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -158,6 +182,8 @@
 				F2CABC321642B8BE00ADE23B /* UCRemoteCall.m */,
 				5DE8A56754296299884A4CA8 /* UCMix.m */,
 				5DE8AD7E531AC9B9087C5E23 /* UCMix.h */,
+				5DE8ABA0ECF9C1277A3F4C18 /* UCMixCoverImages.m */,
+				5DE8A156CDB71D8970D745EE /* UCMixCoverImages.h */,
 			);
 			path = 8tracks4mac;
 			sourceTree = "<group>";
@@ -314,6 +340,8 @@
 				F2CABC331642B8BE00ADE23B /* UCRemoteCall.m in Sources */,
 				C178631A4B2BE7188707AD5C /* TBXML.m in Sources */,
 				5DE8A00C21E39668FD500092 /* UCMix.m in Sources */,
+				5DE8A892F179E69F38E9AC5F /* UCMixCoverImages.m in Sources */,
+				5DE8A4A7585276068E2383E6 /* RXMLElement.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,6 +425,9 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"\"$(SDK_DIR)/usr/include/libxml2\"",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -421,6 +452,9 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"\"$(SDK_DIR)/usr/include/libxml2\"",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				SDKROOT = macosx;
 			};
