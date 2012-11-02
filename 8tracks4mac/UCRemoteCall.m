@@ -8,24 +8,31 @@
 
 #import "UCRemoteCall.h"
 #import "UCAPIKeyReader.h"
+#import "TBXML.h"
 
 @implementation UCRemoteCall
 
 -(NSString *)mixes
 {
     NSString *mixesURL = @"http://8tracks.com/mixes.xml";
-    
-    return [self request:mixesURL];
+
+    NSData *response = [self request:mixesURL];
+
+    return [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];;
 }
 
 -(NSString *)playToken
 {
     NSString *playTokenURL = @"http://8tracks.com/sets/new.xml";
-    
-    return [self request:playTokenURL];
+
+    NSData *response = [self request:playTokenURL];
+    TBXML *xml = [TBXML newTBXMLWithXMLData:response error:nil];
+    TBXMLElement *playToken = [TBXML childElementNamed:@"play-token" parentElement:xml.rootXMLElement];
+
+    return [TBXML textForElement:playToken];
 }
 
-- (NSString *)request:(NSString *)url
+- (NSData *)request:(NSString *)url
 {
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setURL:[NSURL URLWithString:url]];
@@ -37,9 +44,10 @@
     NSHTTPURLResponse* urlResponse = nil;
     NSError *error = [[NSError alloc] init];
     NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&error];
-    NSString *result = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-    NSLog(@"Response Code: %ld", [urlResponse statusCode]);
-    return result;
+
+    NSLog(@"Response Code for URL %@: %ld", url, [urlResponse statusCode]);
+
+    return responseData;
 }
 
 @end

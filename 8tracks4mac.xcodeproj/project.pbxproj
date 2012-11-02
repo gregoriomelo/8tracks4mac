@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C178631A4B2BE7188707AD5C /* TBXML.m in Sources */ = {isa = PBXBuildFile; fileRef = C1786749A866A074514A6BD7 /* TBXML.m */; };
 		F2CABBEC1641C6F100ADE23B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2CABBEB1641C6F100ADE23B /* Cocoa.framework */; };
 		F2CABBF61641C6F100ADE23B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F2CABBF41641C6F100ADE23B /* InfoPlist.strings */; };
 		F2CABBF81641C6F100ADE23B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F2CABBF71641C6F100ADE23B /* main.m */; };
@@ -36,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C17863604E2BCBBFD40CD218 /* TBXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TBXML.h; path = "TBXML-Headers/TBXML.h"; sourceTree = "<group>"; };
+		C1786749A866A074514A6BD7 /* TBXML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TBXML.m; path = "TBXML-Code/TBXML.m"; sourceTree = "<group>"; };
 		F2CABBE71641C6F100ADE23B /* 8tracks4mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 8tracks4mac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2CABBEB1641C6F100ADE23B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		F2CABBEE1641C6F100ADE23B /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -89,6 +92,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C1786B1C259C6D5B7609B691 /* TBXML */ = {
+			isa = PBXGroup;
+			children = (
+				C17863604E2BCBBFD40CD218 /* TBXML.h */,
+				C1786749A866A074514A6BD7 /* TBXML.m */,
+			);
+			path = TBXML;
+			sourceTree = "<group>";
+		};
 		F2CABBDC1641C6F100ADE23B = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +109,7 @@
 				F2CABC0E1641C6F200ADE23B /* 8tracks4macTests */,
 				F2CABBEA1641C6F100ADE23B /* Frameworks */,
 				F2CABBE81641C6F100ADE23B /* Products */,
+				C1786B1C259C6D5B7609B691 /* TBXML */,
 			);
 			sourceTree = "<group>";
 		};
@@ -294,6 +307,7 @@
 				F2CABBFF1641C6F100ADE23B /* UCAppDelegate.m in Sources */,
 				F2CABC2C1641CE4700ADE23B /* UCAPIKeyReader.m in Sources */,
 				F2CABC331642B8BE00ADE23B /* UCRemoteCall.m in Sources */,
+				C178631A4B2BE7188707AD5C /* TBXML.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
