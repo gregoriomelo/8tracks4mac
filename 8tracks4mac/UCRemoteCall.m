@@ -1,8 +1,6 @@
 #import "UCRemoteCall.h"
 #import "UCAPIKeyReader.h"
-#import "TBXML.h"
 #import "RXMLElement.h"
-#import "UCMix.h"
 
 @implementation UCRemoteCall
 
@@ -17,21 +15,33 @@
 
     NSMutableArray *mixes = [NSMutableArray array];
     [xmlMixes enumerateObjectsUsingBlock:^(id xmlMix, NSUInteger index, BOOL *stop) {
-        [mixes addObject:[self fromXML:xmlMix]];
+        [mixes addObject:[self mixFromXML:xmlMix]];
     }];
 
     return [NSString stringWithFormat:@"%d", [[mixes objectAtIndex:0] id]];
 }
 
--(NSString *)playToken
+- (UCMix *)detailsOfMix:(NSInteger) mix {
+    NSString *mixURL = [NSString stringWithFormat:@"http://8tracks.com/mixes/%d.xml", mix];
+
+    RXMLElement *xmlRoot = [RXMLElement elementFromXMLData:[self requestFor:mixURL]];
+
+    return [self mixFromXML:[[xmlRoot children:@"mix"] objectAtIndex:0]];
+}
+
+
+-(UCToken *)playToken
 {
     NSString *playTokenURL = @"http://8tracks.com/sets/new.xml";
 
-    NSData *response = [self requestFor:playTokenURL];
-    TBXML *xml = [TBXML newTBXMLWithXMLData:response error:nil];
-    TBXMLElement *playToken = [TBXML childElementNamed:@"play-token" parentElement:xml.rootXMLElement];
+    RXMLElement *xmlRoot = [RXMLElement elementFromXMLData:[self requestFor:playTokenURL]];
 
-    return [TBXML textForElement:playToken];
+    id tokenXML = [[xmlRoot children:@"play-token"] objectAtIndex:0];
+
+    UCToken *aToken = [[UCToken alloc] init];
+    [aToken setId:[tokenXML textAsInt]];
+
+    return aToken;
 }
 
 -(NSString *)findMixesWithTag:(NSString *)tag1 andTag:(NSString *)tag2
@@ -45,15 +55,35 @@
     return [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
 }
 
-- (UCMix *)fromXML:(id)mix
+- (UCTrack *)trackFromMix:(UCMix *)mix andToken:(UCToken *)token {
+    NSString *trackURL = [NSString stringWithFormat:@"http://8tracks.com/sets/%d/play.xml?mix_id=%d", [token id], [mix id]];
+
+    RXMLElement *xmlRoot = [RXMLElement elementFromXMLData:[self requestFor:trackURL]];
+
+    NSArray *children = [[xmlRoot child:@"set"] children:@"track"];
+    return [self trackFromXML:[children objectAtIndex:0]];
+}
+
+- (UCTrack *)trackFromXML:(id)trackXML {
+    UCTrack *aTrack = [[UCTrack alloc] init];
+    [aTrack setAlbum:[[trackXML child:@"release-name"] text]];
+    [aTrack setId:[[trackXML child:@"id"] textAsInt]];
+    [aTrack setPerformer:[[trackXML child:@"performer"] text]];
+    [aTrack setName:[[trackXML child:@"name"] text]];
+    [aTrack setUrl:[[trackXML child:@"url"] text]];
+    return aTrack;
+}
+
+- (UCMix *)mixFromXML:(id)mix
 {
     UCMix *aMix = [[UCMix alloc] init];
 
-    [aMix setId:[mix child:@"id"].textAsInt];
-    [aMix setDescription:[mix child:@"description"].text];
-    [aMix setName:[mix child:@"name"].text];
-    [aMix setSlug:[mix child:@"slug"].text];
-    [aMix setTimesPlayed:[mix child:@"name"].textAsInt];
+    [aMix setId:[[mix child:@"id"] textAsInt]];
+    [aMix setDescription:[[mix child:@"description"] text]];
+    [aMix setName:[[mix child:@"name"] text]];
+    [aMix setSlug:[[mix child:@"slug"] text]];
+    [aMix setTimesPlayed:[[mix child:@"name"] textAsInt]];
+
     return aMix;
 }
 
@@ -94,5 +124,4 @@
     }
     return output;
 }
-
 @end

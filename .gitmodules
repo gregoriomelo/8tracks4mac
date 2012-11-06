@@ -1,6 +1,3 @@
-[submodule "TBXML"]
-	path = TBXML
-	url = https://github.com/71squared/TBXML.git
 [submodule "RaptureXML"]
 	path = RaptureXML
 	url = https://github.com/ZaBlanc/RaptureXML.git
