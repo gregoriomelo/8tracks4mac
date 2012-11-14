@@ -13,5 +13,6 @@
 - (IBAction)findMixes:(id)sender;
 - (IBAction)detailsOfMix:(id)sender;
 - (IBAction)playMix:(id)sender;
+- (IBAction)playOrPause:(id)sender;
 
 @end

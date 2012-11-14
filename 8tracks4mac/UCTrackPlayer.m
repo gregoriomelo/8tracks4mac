@@ -4,6 +4,8 @@
 @implementation UCTrackPlayer
 
 static UCTrackPlayer *_player = nil;
+NSSound *soundPlayer = nil;
+BOOL isPlaying = false;
 
 + (UCTrackPlayer *)player {
     @synchronized ([UCTrackPlayer class]) {
@@ -22,13 +24,32 @@ static UCTrackPlayer *_player = nil;
     }
 }
 
+-(id)init {
+    self = [super init];
+    if (self != nil) {
+        soundPlayer = [[NSSound alloc] init];
+    }
+
+    return self;
+}
+
 - (void)playTrackFromMix:(UCMix *)mix withToken:(UCToken *)token {
     UCTrack *track = [[[UCRemoteCall alloc] init] trackFromMix:mix andToken:token];
 
     NSURL *url = [NSURL URLWithString:[track url]];
 
-    NSSound *player = [[NSSound alloc] initWithContentsOfURL:url byReference:NO];
-    [player play];
+    soundPlayer = [[NSSound alloc] initWithContentsOfURL:url byReference:NO];
+    [soundPlayer play];
+    isPlaying = true;
 }
 
+- (void)playOrPause {
+    if (isPlaying) {
+        [soundPlayer pause];
+        isPlaying = false;
+    } else {
+        [soundPlayer resume];
+        isPlaying = true;
+    }
+}
 @end

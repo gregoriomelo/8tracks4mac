@@ -7,4 +7,5 @@
 + (UCTrackPlayer *)player;
 - (void)playTrackFromMix:(UCMix *)mix withToken:(UCToken *)token;
 
+- (void)playOrPause;
 @end

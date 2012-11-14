@@ -44,4 +44,8 @@
     [player playTrackFromMix:mix withToken:[remoteCaller playToken]];
 }
 
+- (IBAction)playOrPause:(id)sender {
+    [[UCTrackPlayer player] playOrPause];
+}
+
 @end
