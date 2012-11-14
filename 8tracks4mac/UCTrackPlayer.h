@@ -4,6 +4,7 @@
 
 @interface UCTrackPlayer : NSObject
 
++ (UCTrackPlayer *)player;
 - (void)playTrackFromMix:(UCMix *)mix withToken:(UCToken *)token;
 
 @end

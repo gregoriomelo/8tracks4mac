@@ -18,11 +18,11 @@
         [mixes addObject:[self mixFromXML:xmlMix]];
     }];
 
-    return [NSString stringWithFormat:@"%d", [[mixes objectAtIndex:0] id]];
+    return [NSString stringWithFormat:@"%ld", [(UCMix *)[mixes objectAtIndex:0] id]];
 }
 
-- (UCMix *)detailsOfMix:(NSInteger) mix {
-    NSString *mixURL = [NSString stringWithFormat:@"http://8tracks.com/mixes/%d.xml", mix];
+- (UCMix *)detailsOfMix:(long) mixId {
+    NSString *mixURL = [NSString stringWithFormat:@"http://8tracks.com/mixes/%ld.xml", mixId];
 
     RXMLElement *xmlRoot = [RXMLElement elementFromXMLData:[self requestFor:mixURL]];
 
@@ -56,7 +56,7 @@
 }
 
 - (UCTrack *)trackFromMix:(UCMix *)mix andToken:(UCToken *)token {
-    NSString *trackURL = [NSString stringWithFormat:@"http://8tracks.com/sets/%d/play.xml?mix_id=%d", [token id], [mix id]];
+    NSString *trackURL = [NSString stringWithFormat:@"http://8tracks.com/sets/%ld/play.xml?mix_id=%ld", [token id], [mix id]];
 
     RXMLElement *xmlRoot = [RXMLElement elementFromXMLData:[self requestFor:trackURL]];
 
@@ -67,7 +67,7 @@
 - (UCTrack *)trackFromXML:(id)trackXML {
     UCTrack *aTrack = [[UCTrack alloc] init];
     [aTrack setAlbum:[[trackXML child:@"release-name"] text]];
-    [aTrack setId:[[trackXML child:@"id"] textAsInt]];
+    [aTrack setId:[[[trackXML child:@"id"] text] longLongValue]];
     [aTrack setPerformer:[[trackXML child:@"performer"] text]];
     [aTrack setName:[[trackXML child:@"name"] text]];
     [aTrack setUrl:[[trackXML child:@"url"] text]];
@@ -82,7 +82,7 @@
     [aMix setDescription:[[mix child:@"description"] text]];
     [aMix setName:[[mix child:@"name"] text]];
     [aMix setSlug:[[mix child:@"slug"] text]];
-    [aMix setTimesPlayed:[[mix child:@"name"] textAsInt]];
+    [aMix setTimesPlayed:[[[mix child:@"name"] text] longLongValue]];
 
     return aMix;
 }

@@ -2,6 +2,6 @@
 
 @interface UCToken : NSObject
 
-@property NSInteger *id;
+@property long id;
 
 @end

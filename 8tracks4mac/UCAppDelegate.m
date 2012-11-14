@@ -20,7 +20,7 @@
 {
     UCToken *token = [[[UCRemoteCall alloc] init] playToken];
     
-    [_message setStringValue:[NSString stringWithFormat:@"%d", [token id]]];
+    [_message setStringValue:[NSString stringWithFormat:@"%ld", [token id]]];
 }
 
 - (IBAction)findMixes:(id)sender {
@@ -36,7 +36,7 @@
 }
 
 - (IBAction)playMix:(id)sender {
-    UCTrackPlayer *player = [[UCTrackPlayer alloc] init];
+    UCTrackPlayer *player = [UCTrackPlayer player];
 
     UCRemoteCall *remoteCaller = [[UCRemoteCall alloc] init];
     UCMix *mix = [remoteCaller detailsOfMix:[_mixId intValue]];

@@ -6,9 +6,9 @@
 @property NSString *name;
 @property NSString *slug;
 @property bool published;
-@property NSInteger *id;
+@property long id;
 @property NSArray *tags;
-@property NSInteger *timesPlayed;
+@property long timesPlayed;
 @property NSString *description;
 
 @end
