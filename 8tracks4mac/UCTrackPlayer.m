@@ -6,6 +6,7 @@
 static UCTrackPlayer *_player = nil;
 NSSound *soundPlayer = nil;
 BOOL isPlaying = false;
+NSMutableData *downloadingSong = nil;
 
 + (UCTrackPlayer *)player {
     @synchronized ([UCTrackPlayer class]) {
@@ -38,9 +39,8 @@ BOOL isPlaying = false;
 
     NSURL *url = [NSURL URLWithString:[track url]];
 
-    soundPlayer = [[NSSound alloc] initWithContentsOfURL:url byReference:NO];
-    [soundPlayer play];
-    isPlaying = true;
+    [[NSURLConnection alloc] initWithRequest:[NSURLRequest requestWithURL:url] delegate:self];
+    NSLog(@"Started downloading from URL: %s", url);
 }
 
 - (void)playOrPause {
@@ -52,4 +52,25 @@ BOOL isPlaying = false;
         isPlaying = true;
     }
 }
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *) data {
+    if (!downloadingSong) {
+        downloadingSong = [NSMutableData new];
+    }
+    NSLog(@"More data...");
+    [downloadingSong appendData:data];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    NSLog(@"Finished loading song...");
+
+    soundPlayer = [[NSSound alloc] initWithData:downloadingSong];
+    [soundPlayer play];
+    isPlaying = true;
+}
+
+- (void)connection:(NSURLConnection *) connection didFailWithError:(NSError *)error{
+    NSLog(@"Error loading song: %@", error);
+}
+
 @end
