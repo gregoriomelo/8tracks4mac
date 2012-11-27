@@ -26,7 +26,7 @@
     UCRemoteCall *remoteCaller = [[UCRemoteCall alloc] init];
     UCMix *mix = [remoteCaller detailsOfMix:[_mixId intValue]];
 
-    [player playTrackFromMix:mix withToken:[remoteCaller playToken]];
+    [player startPlayingMix:mix withToken:[remoteCaller playToken]];
 }
 
 - (IBAction)playOrPause:(id)sender {

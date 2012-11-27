@@ -2,10 +2,10 @@
 #import "UCRemoteCall.h"
 #import "UCToken.h"
 
-@interface UCTrackPlayer : NSObject
+@interface UCTrackPlayer : NSObject <NSURLConnectionDelegate>
 
 + (UCTrackPlayer *)player;
-- (void)playTrackFromMix:(UCMix *)mix withToken:(UCToken *)token;
+- (void)startPlayingMix:(UCMix *)mix withToken:(UCToken *)token;
 
 - (void)playOrPause;
 @end

@@ -35,13 +35,13 @@ float trackDataReceived = 0;
     return self;
 }
 
-- (void)playTrackFromMix:(UCMix *)mix withToken:(UCToken *)token {
+- (void)startPlayingMix:(UCMix *)mix withToken:(UCToken *)token {
     UCTrack *track = [[[UCRemoteCall alloc] init] trackFromMix:mix andToken:token];
 
     NSURL *url = [NSURL URLWithString:[track url]];
 
     [[NSURLConnection alloc] initWithRequest:[NSURLRequest requestWithURL:url] delegate:self];
-    NSLog(@"Started downloading from URL: %s", [url absoluteString]);
+    NSLog(@"Started downloading from URL: %@", [url absoluteString]);
 }
 
 - (void)playOrPause {
@@ -71,6 +71,10 @@ float trackDataReceived = 0;
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     NSLog(@"Finished loading song...");
 
+    [self playDownloadedSong];
+}
+
+- (void)playDownloadedSong {
     soundPlayer = [[NSSound alloc] initWithData:downloadingSong];
     [soundPlayer play];
     isPlaying = true;
