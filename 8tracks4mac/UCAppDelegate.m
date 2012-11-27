@@ -8,20 +8,6 @@
 {
 }
 
-- (IBAction)push:(id)sender
-{
-    NSString *mixes = [[[UCRemoteCall alloc] init] mixes];
-    
-    [_message setStringValue:mixes];
-}
-
-- (IBAction)playToken:(id)sender
-{
-    UCToken *token = [[[UCRemoteCall alloc] init] playToken];
-    
-    [_message setStringValue:[NSString stringWithFormat:@"%ld", [token id]]];
-}
-
 - (IBAction)findMixes:(id)sender {
     NSString *mixes = [[[UCRemoteCall alloc] init] findMixesWithTag:[_tag1 stringValue] andTag:[_tag2 stringValue]];
 
