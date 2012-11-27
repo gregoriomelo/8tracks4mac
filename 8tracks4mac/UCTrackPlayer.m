@@ -1,12 +1,13 @@
 #import "UCTrackPlayer.h"
 
-
 @implementation UCTrackPlayer
 
 static UCTrackPlayer *_player = nil;
 NSSound *soundPlayer = nil;
 BOOL isPlaying = false;
 NSMutableData *downloadingSong = nil;
+float trackDataSize = 0;
+float trackDataReceived = 0;
 
 + (UCTrackPlayer *)player {
     @synchronized ([UCTrackPlayer class]) {
@@ -40,7 +41,7 @@ NSMutableData *downloadingSong = nil;
     NSURL *url = [NSURL URLWithString:[track url]];
 
     [[NSURLConnection alloc] initWithRequest:[NSURLRequest requestWithURL:url] delegate:self];
-    NSLog(@"Started downloading from URL: %s", url);
+    NSLog(@"Started downloading from URL: %s", [url absoluteString]);
 }
 
 - (void)playOrPause {
@@ -53,12 +54,18 @@ NSMutableData *downloadingSong = nil;
     }
 }
 
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+    trackDataSize = [[NSString stringWithFormat:@"%lli", [response expectedContentLength]] floatValue];
+}
+
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *) data {
     if (!downloadingSong) {
         downloadingSong = [NSMutableData new];
     }
-    NSLog(@"More data...");
+    trackDataReceived += [data length];
     [downloadingSong appendData:data];
+
+    NSLog(@"Downloaded: %d%%", [[NSNumber numberWithFloat:(trackDataReceived / trackDataSize) * 100] integerValue]);
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
