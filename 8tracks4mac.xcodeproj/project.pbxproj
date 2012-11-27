@@ -13,6 +13,7 @@
 		5DE8A78BA6182B9F7C109A38 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DE8A2BCA30D460A76F3D2F9 /* libxml2.dylib */; };
 		5DE8A892F179E69F38E9AC5F /* UCMixCoverImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE8ABA0ECF9C1277A3F4C18 /* UCMixCoverImages.m */; };
 		C17860E1C0E15299CCBE8660 /* UCToken.m in Sources */ = {isa = PBXBuildFile; fileRef = C17863F79CD7DA6F405DB202 /* UCToken.m */; };
+		C1786E1395CCE21C0CF48177 /* UCTrackDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = C1786A2A86E8A34D101A7E5B /* UCTrackDownloader.m */; };
 		C1786F021F0DE1304D14EB59 /* UCTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = C1786B1ECE78B2AC5AD9AB0E /* UCTrack.m */; };
 		C1786FC92CDAA9A75536DC82 /* UCTrackPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C17869E3C9F757677E8683AA /* UCTrackPlayer.m */; };
 		F2CABBEC1641C6F100ADE23B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2CABBEB1641C6F100ADE23B /* Cocoa.framework */; };
@@ -52,7 +53,9 @@
 		5DE8AD7E531AC9B9087C5E23 /* UCMix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UCMix.h; sourceTree = "<group>"; };
 		5DE8AF54A29F072BF4C11202 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		C17863F79CD7DA6F405DB202 /* UCToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UCToken.m; sourceTree = "<group>"; };
+		C17867051F3B5A939431A4EB /* UCTrackDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UCTrackDownloader.h; sourceTree = "<group>"; };
 		C17869E3C9F757677E8683AA /* UCTrackPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UCTrackPlayer.m; sourceTree = "<group>"; };
+		C1786A2A86E8A34D101A7E5B /* UCTrackDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UCTrackDownloader.m; sourceTree = "<group>"; };
 		C1786B1ECE78B2AC5AD9AB0E /* UCTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UCTrack.m; sourceTree = "<group>"; };
 		C1786B261187946CED7006DD /* UCTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UCTrack.h; sourceTree = "<group>"; };
 		C1786DCC4CBF998584FBFBFB /* UCTrackPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UCTrackPlayer.h; sourceTree = "<group>"; };
@@ -180,6 +183,8 @@
 				C1786DCC4CBF998584FBFBFB /* UCTrackPlayer.h */,
 				C17863F79CD7DA6F405DB202 /* UCToken.m */,
 				C1786EB250CAA41FDE6363FB /* UCToken.h */,
+				C1786A2A86E8A34D101A7E5B /* UCTrackDownloader.m */,
+				C17867051F3B5A939431A4EB /* UCTrackDownloader.h */,
 			);
 			path = 8tracks4mac;
 			sourceTree = "<group>";
@@ -339,6 +344,7 @@
 				C1786F021F0DE1304D14EB59 /* UCTrack.m in Sources */,
 				C1786FC92CDAA9A75536DC82 /* UCTrackPlayer.m in Sources */,
 				C17860E1C0E15299CCBE8660 /* UCToken.m in Sources */,
+				C1786E1395CCE21C0CF48177 /* UCTrackDownloader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

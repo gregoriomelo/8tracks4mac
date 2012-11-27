@@ -1,13 +1,12 @@
 #import "UCTrackPlayer.h"
+#import "UCTrackDownloader.h"
 
-@implementation UCTrackPlayer
+@implementation UCTrackPlayer {
+    BOOL isPlaying;
+}
 
 static UCTrackPlayer *_player = nil;
 NSSound *soundPlayer = nil;
-BOOL isPlaying = false;
-NSMutableData *downloadingSong = nil;
-float trackDataSize = 0;
-float trackDataReceived = 0;
 
 + (UCTrackPlayer *)player {
     @synchronized ([UCTrackPlayer class]) {
@@ -19,14 +18,14 @@ float trackDataReceived = 0;
     }
 }
 
-+(id)alloc {
++ (id)alloc {
     @synchronized ([UCTrackPlayer class]) {
         _player = [super alloc];
         return _player;
     }
 }
 
--(id)init {
+- (id)init {
     self = [super init];
     if (self != nil) {
         soundPlayer = [[NSSound alloc] init];
@@ -38,10 +37,15 @@ float trackDataReceived = 0;
 - (void)startPlayingMix:(UCMix *)mix withToken:(UCToken *)token {
     UCTrack *track = [[[UCRemoteCall alloc] init] trackFromMix:mix andToken:token];
 
-    NSURL *url = [NSURL URLWithString:[track url]];
+    UCTrackDownloader *trackDownloader = [[UCTrackDownloader alloc] init];
 
-    [[NSURLConnection alloc] initWithRequest:[NSURLRequest requestWithURL:url] delegate:self];
-    NSLog(@"Started downloading from URL: %@", [url absoluteString]);
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(trackHasFinishedDownloading:) name:TRACK_HAS_FINISHED_DOWNLOADING object:trackDownloader];
+
+    [trackDownloader downloadTrack:track];
+}
+
+- (void)trackHasFinishedDownloading:(NSNotification *)note {
+    [self playDownloadedSong:[[note userInfo] objectForKey:@"trackData"]];
 }
 
 - (void)playOrPause {
@@ -54,34 +58,10 @@ float trackDataReceived = 0;
     }
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-    trackDataSize = [[NSString stringWithFormat:@"%lli", [response expectedContentLength]] floatValue];
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *) data {
-    if (!downloadingSong) {
-        downloadingSong = [NSMutableData new];
-    }
-    trackDataReceived += [data length];
-    [downloadingSong appendData:data];
-
-    NSLog(@"Downloaded: %d%%", [[NSNumber numberWithFloat:(trackDataReceived / trackDataSize) * 100] integerValue]);
-}
-
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    NSLog(@"Finished loading song...");
-
-    [self playDownloadedSong];
-}
-
-- (void)playDownloadedSong {
-    soundPlayer = [[NSSound alloc] initWithData:downloadingSong];
+- (void)playDownloadedSong:(NSData *)trackData {
+    soundPlayer = [[NSSound alloc] initWithData:trackData];
     [soundPlayer play];
     isPlaying = true;
-}
-
-- (void)connection:(NSURLConnection *) connection didFailWithError:(NSError *)error{
-    NSLog(@"Error loading song: %@", error);
 }
 
 @end
