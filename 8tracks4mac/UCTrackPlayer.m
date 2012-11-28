@@ -2,7 +2,7 @@
 #import "UCTrackDownloader.h"
 
 @implementation UCTrackPlayer {
-    BOOL isPlaying;
+    BOOL _isPlaying;
 }
 
 static UCTrackPlayer *_player = nil;
@@ -35,33 +35,45 @@ NSSound *soundPlayer = nil;
 }
 
 - (void)startPlayingMix:(UCMix *)mix withToken:(UCToken *)token {
-    UCTrack *track = [[[UCRemoteCall alloc] init] trackFromMix:mix andToken:token];
+    _currentTrack = [[[UCRemoteCall alloc] init] trackFromMix:mix andToken:token];
 
     UCTrackDownloader *trackDownloader = [[UCTrackDownloader alloc] init];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(trackHasFinishedDownloading:) name:TRACK_HAS_FINISHED_DOWNLOADING object:trackDownloader];
 
-    [trackDownloader downloadTrack:track];
+    [trackDownloader downloadTrack:_currentTrack];
 }
 
 - (void)trackHasFinishedDownloading:(NSNotification *)note {
-    [self playDownloadedSong:[[note userInfo] objectForKey:@"trackData"]];
+    [self initializeSoundPlayerWithTrackData:note];
+    [self playDownloadedSong];
+    [self defineTrackLengthFromDownloadedData];
+
+}
+
+- (void)defineTrackLengthFromDownloadedData {
+    [_currentTrack setLengthInSeconds:[[NSNumber numberWithDouble:[soundPlayer duration]] integerValue]];
+}
+
+- (void)initializeSoundPlayerWithTrackData:(NSNotification *)note {
+    NSData *trackData = [[note userInfo] objectForKey:@"trackData"];
+
+    soundPlayer = [[NSSound alloc] initWithData:trackData];
+}
+
+- (void)playDownloadedSong {
+    [soundPlayer play];
+    _isPlaying = true;
 }
 
 - (void)playOrPause {
-    if (isPlaying) {
+    if (_isPlaying) {
         [soundPlayer pause];
-        isPlaying = false;
+        _isPlaying = false;
     } else {
         [soundPlayer resume];
-        isPlaying = true;
+        _isPlaying = true;
     }
-}
-
-- (void)playDownloadedSong:(NSData *)trackData {
-    soundPlayer = [[NSSound alloc] initWithData:trackData];
-    [soundPlayer play];
-    isPlaying = true;
 }
 
 @end

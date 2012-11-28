@@ -7,6 +7,7 @@
 @property (weak) NSString *url;
 @property (weak) NSString *performer;
 @property (weak) NSString *album;
+@property NSInteger lengthInSeconds;
 @property long id;
 
 @end

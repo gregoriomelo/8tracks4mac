@@ -4,8 +4,10 @@
 
 @interface UCTrackPlayer : NSObject
 
+@property(nonatomic, strong, readonly) UCTrack *currentTrack;
+
 + (UCTrackPlayer *)player;
 - (void)startPlayingMix:(UCMix *)mix withToken:(UCToken *)token;
-
 - (void)playOrPause;
+
 @end

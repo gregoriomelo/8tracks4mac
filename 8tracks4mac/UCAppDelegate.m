@@ -39,7 +39,7 @@
     if ([progress isComplete]) {
         [_downloadingStatus setStringValue:@"Buffering complete"];
     } else {
-        [_downloadingStatus setStringValue:[NSString stringWithFormat:@"Buffering: %d%%", [[progress value] integerValue]]];
+        [_downloadingStatus setStringValue:[NSString stringWithFormat:@"Buffering: %ld%%", [[progress value] integerValue]]];
     }
 }
 
