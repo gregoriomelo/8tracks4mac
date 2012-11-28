@@ -3,11 +3,13 @@
 #import "UCTrack.h"
 #import "UCToken.h"
 
-@interface UCRemoteCall : NSObject
+@interface UCRemoteCaller : NSObject
 
 -(NSString *)mixes;
 -(UCMix *)detailsOfMix:(long)mix;
 -(UCToken *)playToken;
 -(NSString *)findMixesWithTag:(NSString *)tag1 andTag:(NSString *)tag2;
--(UCTrack *)trackFromMix:(UCMix *)mix andToken:(UCToken *)token;
+-(UCTrack *)trackFromMix:(UCMix *)mix withToken:(UCToken *)token;
+
+- (UCTrack *)skipWithinMix:(UCMix *)mix withToken:(UCToken *)token;
 @end

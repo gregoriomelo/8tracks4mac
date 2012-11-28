@@ -1,7 +1,8 @@
 #import <Cocoa/Cocoa.h>
-#import "UCRemoteCall.h"
+#import "UCRemoteCaller.h"
 #import "UCTrackPlayer.h"
 #import "UCTrackDownloader.h"
+#import "UCMixPresenter.h"
 
 @interface UCAppDelegate : NSObject <NSApplicationDelegate>
 
@@ -15,6 +16,7 @@
 - (IBAction)findMixes:(id)sender;
 - (IBAction)detailsOfMix:(id)sender;
 - (IBAction)playMix:(id)sender;
-- (IBAction)playOrPause:(id)sender;
+- (IBAction)resumeOrPause:(id)sender;
+- (IBAction)skipCurrentSong:(id)sender;
 
 @end

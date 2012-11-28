@@ -1,34 +1,39 @@
 #import "UCAppDelegate.h"
 
-@implementation UCAppDelegate
+@implementation UCAppDelegate {
+    UCMixPresenter *mixPresenter;
+}
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(trackIsDownloading:) name:TRACK_IS_DOWNLOADING object:nil];
+
+    mixPresenter = [UCMixPresenter initWithRemoteCaller:[UCRemoteCaller new]];
 }
 
 - (IBAction)findMixes:(id)sender {
-    NSString *mixes = [[[UCRemoteCall alloc] init] findMixesWithTag:[_tag1 stringValue] andTag:[_tag2 stringValue]];
+    NSString *mixes = [mixPresenter findMixesWithTag:[_tag1 stringValue] andTag:[_tag2 stringValue]];
 
     [_message setStringValue:mixes];
 }
 
 - (IBAction)detailsOfMix:(id)sender {
-    UCMix *mix = [[[UCRemoteCall alloc] init] detailsOfMix:[_mixId intValue]];
+    UCMix *mix = [[UCRemoteCaller new] detailsOfMix:[_mixId intValue]];
 
     [_message setStringValue:[mix description]];
 }
 
 - (IBAction)playMix:(id)sender {
-    UCTrackPlayer *player = [UCTrackPlayer player];
+    UCMix *mix = [mixPresenter detailsOfMix:[_mixId integerValue]];
 
-    UCRemoteCall *remoteCaller = [[UCRemoteCall alloc] init];
-    UCMix *mix = [remoteCaller detailsOfMix:[_mixId intValue]];
-
-    [player startPlayingMix:mix withToken:[remoteCaller playToken]];
+    [mixPresenter startPlayingMix:mix];
 }
 
-- (IBAction)playOrPause:(id)sender {
-    [[UCTrackPlayer player] playOrPause];
+- (IBAction)resumeOrPause:(id)sender {
+    [mixPresenter resumeOrPause];
+}
+
+- (IBAction)skipCurrentSong:(id)sender {
+    [mixPresenter skipCurrentSong];
 }
 
 - (void)trackIsDownloading:(NSNotification *)note {

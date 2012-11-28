@@ -34,8 +34,8 @@ NSSound *soundPlayer = nil;
     return self;
 }
 
-- (void)startPlayingMix:(UCMix *)mix withToken:(UCToken *)token {
-    _currentTrack = [[[UCRemoteCall alloc] init] trackFromMix:mix andToken:token];
+- (void)startPlayingTrack:(UCTrack *)track {
+    _currentTrack = track;
 
     UCTrackDownloader *trackDownloader = [[UCTrackDownloader alloc] init];
 
@@ -58,6 +58,10 @@ NSSound *soundPlayer = nil;
 - (void)initializeSoundPlayerWithTrackData:(NSNotification *)note {
     NSData *trackData = [[note userInfo] objectForKey:@"trackData"];
 
+    if (soundPlayer) {
+        [soundPlayer stop];
+    }
+
     soundPlayer = [[NSSound alloc] initWithData:trackData];
 }
 
@@ -66,7 +70,7 @@ NSSound *soundPlayer = nil;
     _isPlaying = true;
 }
 
-- (void)playOrPause {
+- (void)resumeOrPause {
     if (_isPlaying) {
         [soundPlayer pause];
         _isPlaying = false;

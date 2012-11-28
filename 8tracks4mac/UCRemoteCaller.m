@@ -1,8 +1,8 @@
-#import "UCRemoteCall.h"
+#import "UCRemoteCaller.h"
 #import "UCAPIKeyReader.h"
 #import "RXMLElement.h"
 
-@implementation UCRemoteCall
+@implementation UCRemoteCaller
 
 -(NSString *)mixes
 {
@@ -29,7 +29,6 @@
     return [self mixFromXML:[[xmlRoot children:@"mix"] objectAtIndex:0]];
 }
 
-
 -(UCToken *)playToken
 {
     NSString *playTokenURL = @"http://8tracks.com/sets/new.xml";
@@ -55,9 +54,20 @@
     return [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
 }
 
-- (UCTrack *)trackFromMix:(UCMix *)mix andToken:(UCToken *)token {
+- (UCTrack *)trackFromMix:(UCMix *)mix withToken:(UCToken *)token {
     NSString *trackURL = [NSString stringWithFormat:@"http://8tracks.com/sets/%ld/play.xml?mix_id=%ld", [token id], [mix id]];
 
+    return [self extractTrackFromURL:trackURL];
+
+}
+
+- (UCTrack *)skipWithinMix:(UCMix *)mix withToken:(UCToken *)token {
+    NSString *trackURL = [NSString stringWithFormat:@"http://8tracks.com/sets/%ld/skip.xml?mix_id=%ld", [token id], [mix id]];
+
+    return [self extractTrackFromURL:trackURL];
+}
+
+- (UCTrack *)extractTrackFromURL:(NSString *)trackURL {
     RXMLElement *xmlRoot = [RXMLElement elementFromXMLData:[self requestFor:trackURL]];
 
     NSArray *children = [[xmlRoot child:@"set"] children:@"track"];
@@ -124,4 +134,5 @@
     }
     return output;
 }
+
 @end

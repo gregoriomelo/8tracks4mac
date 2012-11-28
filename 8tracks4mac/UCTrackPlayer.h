@@ -1,5 +1,5 @@
 #import <Foundation/Foundation.h>
-#import "UCRemoteCall.h"
+#import "UCRemoteCaller.h"
 #import "UCToken.h"
 
 @interface UCTrackPlayer : NSObject
@@ -7,7 +7,8 @@
 @property(nonatomic, strong, readonly) UCTrack *currentTrack;
 
 + (UCTrackPlayer *)player;
-- (void)startPlayingMix:(UCMix *)mix withToken:(UCToken *)token;
-- (void)playOrPause;
+
+- (void)startPlayingTrack:(UCTrack *)track;
+- (void)resumeOrPause;
 
 @end

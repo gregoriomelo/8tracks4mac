@@ -14,6 +14,7 @@
 		5DE8A892F179E69F38E9AC5F /* UCMixCoverImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE8ABA0ECF9C1277A3F4C18 /* UCMixCoverImages.m */; };
 		C17860E1C0E15299CCBE8660 /* UCToken.m in Sources */ = {isa = PBXBuildFile; fileRef = C17863F79CD7DA6F405DB202 /* UCToken.m */; };
 		C17862E2A3017A6037F66918 /* UCDownloadProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = C1786E110F10479084F26200 /* UCDownloadProgress.m */; };
+		C1786B9749C1662CFB9ABD0D /* UCMixPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = C17867003C406FAC1C464129 /* UCMixPresenter.m */; };
 		C1786E1395CCE21C0CF48177 /* UCTrackDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = C1786A2A86E8A34D101A7E5B /* UCTrackDownloader.m */; };
 		C1786F021F0DE1304D14EB59 /* UCTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = C1786B1ECE78B2AC5AD9AB0E /* UCTrack.m */; };
 		C1786FC92CDAA9A75536DC82 /* UCTrackPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C17869E3C9F757677E8683AA /* UCTrackPlayer.m */; };
@@ -30,7 +31,7 @@
 		F2CABC281641CDDB00ADE23B /* API_Key.plist in Resources */ = {isa = PBXBuildFile; fileRef = F2CABC271641CDDB00ADE23B /* API_Key.plist */; };
 		F2CABC2C1641CE4700ADE23B /* UCAPIKeyReader.m in Sources */ = {isa = PBXBuildFile; fileRef = F2CABC2B1641CE4700ADE23B /* UCAPIKeyReader.m */; };
 		F2CABC301641CEAA00ADE23B /* UCAPIKeyReaderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = F2CABC2F1641CEAA00ADE23B /* UCAPIKeyReaderTest.m */; };
-		F2CABC331642B8BE00ADE23B /* UCRemoteCall.m in Sources */ = {isa = PBXBuildFile; fileRef = F2CABC321642B8BE00ADE23B /* UCRemoteCall.m */; };
+		F2CABC331642B8BE00ADE23B /* UCRemoteCaller.m in Sources */ = {isa = PBXBuildFile; fileRef = F2CABC321642B8BE00ADE23B /* UCRemoteCaller.m */; };
 		F2CABC361642B8E300ADE23B /* UCRemoteCallTest.m in Sources */ = {isa = PBXBuildFile; fileRef = F2CABC351642B8E300ADE23B /* UCRemoteCallTest.m */; };
 /* End PBXBuildFile section */
 
@@ -54,7 +55,9 @@
 		5DE8AD7E531AC9B9087C5E23 /* UCMix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UCMix.h; sourceTree = "<group>"; };
 		5DE8AF54A29F072BF4C11202 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		C1786223BDF29DEB0BED7D1A /* UCDownloadProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UCDownloadProgress.h; sourceTree = "<group>"; };
+		C178625AE132303233E1580B /* UCMixPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UCMixPresenter.h; sourceTree = "<group>"; };
 		C17863F79CD7DA6F405DB202 /* UCToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UCToken.m; sourceTree = "<group>"; };
+		C17867003C406FAC1C464129 /* UCMixPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UCMixPresenter.m; sourceTree = "<group>"; };
 		C17867051F3B5A939431A4EB /* UCTrackDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UCTrackDownloader.h; sourceTree = "<group>"; };
 		C17869E3C9F757677E8683AA /* UCTrackPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UCTrackPlayer.m; sourceTree = "<group>"; };
 		C1786A2A86E8A34D101A7E5B /* UCTrackDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UCTrackDownloader.m; sourceTree = "<group>"; };
@@ -86,8 +89,8 @@
 		F2CABC2B1641CE4700ADE23B /* UCAPIKeyReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UCAPIKeyReader.m; sourceTree = "<group>"; };
 		F2CABC2E1641CEAA00ADE23B /* UCAPIKeyReaderTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UCAPIKeyReaderTest.h; sourceTree = "<group>"; };
 		F2CABC2F1641CEAA00ADE23B /* UCAPIKeyReaderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UCAPIKeyReaderTest.m; sourceTree = "<group>"; };
-		F2CABC311642B8BE00ADE23B /* UCRemoteCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UCRemoteCall.h; sourceTree = "<group>"; };
-		F2CABC321642B8BE00ADE23B /* UCRemoteCall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UCRemoteCall.m; sourceTree = "<group>"; };
+		F2CABC311642B8BE00ADE23B /* UCRemoteCaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UCRemoteCaller.h; sourceTree = "<group>"; };
+		F2CABC321642B8BE00ADE23B /* UCRemoteCaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UCRemoteCaller.m; sourceTree = "<group>"; };
 		F2CABC341642B8E300ADE23B /* UCRemoteCallTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UCRemoteCallTest.h; sourceTree = "<group>"; };
 		F2CABC351642B8E300ADE23B /* UCRemoteCallTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UCRemoteCallTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -174,8 +177,8 @@
 				F2CABC001641C6F200ADE23B /* MainMenu.xib */,
 				F2CABC2A1641CE4700ADE23B /* UCAPIKeyReader.h */,
 				F2CABC2B1641CE4700ADE23B /* UCAPIKeyReader.m */,
-				F2CABC311642B8BE00ADE23B /* UCRemoteCall.h */,
-				F2CABC321642B8BE00ADE23B /* UCRemoteCall.m */,
+				F2CABC311642B8BE00ADE23B /* UCRemoteCaller.h */,
+				F2CABC321642B8BE00ADE23B /* UCRemoteCaller.m */,
 				5DE8A56754296299884A4CA8 /* UCMix.m */,
 				5DE8AD7E531AC9B9087C5E23 /* UCMix.h */,
 				5DE8ABA0ECF9C1277A3F4C18 /* UCMixCoverImages.m */,
@@ -190,6 +193,8 @@
 				C17867051F3B5A939431A4EB /* UCTrackDownloader.h */,
 				C1786E110F10479084F26200 /* UCDownloadProgress.m */,
 				C1786223BDF29DEB0BED7D1A /* UCDownloadProgress.h */,
+				C17867003C406FAC1C464129 /* UCMixPresenter.m */,
+				C178625AE132303233E1580B /* UCMixPresenter.h */,
 			);
 			path = 8tracks4mac;
 			sourceTree = "<group>";
@@ -342,7 +347,7 @@
 				F2CABBF81641C6F100ADE23B /* main.m in Sources */,
 				F2CABBFF1641C6F100ADE23B /* UCAppDelegate.m in Sources */,
 				F2CABC2C1641CE4700ADE23B /* UCAPIKeyReader.m in Sources */,
-				F2CABC331642B8BE00ADE23B /* UCRemoteCall.m in Sources */,
+				F2CABC331642B8BE00ADE23B /* UCRemoteCaller.m in Sources */,
 				5DE8A00C21E39668FD500092 /* UCMix.m in Sources */,
 				5DE8A892F179E69F38E9AC5F /* UCMixCoverImages.m in Sources */,
 				5DE8A4A7585276068E2383E6 /* RXMLElement.m in Sources */,
@@ -351,6 +356,7 @@
 				C17860E1C0E15299CCBE8660 /* UCToken.m in Sources */,
 				C1786E1395CCE21C0CF48177 /* UCTrackDownloader.m in Sources */,
 				C17862E2A3017A6037F66918 /* UCDownloadProgress.m in Sources */,
+				C1786B9749C1662CFB9ABD0D /* UCMixPresenter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
