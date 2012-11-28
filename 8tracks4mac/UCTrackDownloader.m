@@ -19,7 +19,7 @@
 - (void)downloadTrack:(UCTrack *)track {
     NSURL *url = [NSURL URLWithString:[track url]];
 
-    [[NSURLConnection alloc] initWithRequest:[NSURLRequest requestWithURL:url] delegate:self];
+    (void) [[NSURLConnection alloc] initWithRequest:[NSURLRequest requestWithURL:url] delegate:self];
 
     NSLog(@"Started downloading from URL: %@", [url absoluteString]);
 }
@@ -35,12 +35,14 @@
     trackDataReceived += [data length];
     [downloadingSong appendData:data];
 
-    NSLog(@"Downloaded: %ld%%", [[NSNumber numberWithFloat:(trackDataReceived / trackDataSize) * 100] integerValue]);
+    NSNumber *rawProgress = [NSNumber numberWithFloat:(trackDataReceived / trackDataSize) * 100];
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:TRACK_IS_DOWNLOADING
+                                                        object:self
+                                                      userInfo:@{@"downloadProgress" : [UCDownloadProgress initWithValue:rawProgress]}];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    NSLog(@"Finished loading song...");
-
     [self notifyTrackHasFinishedDownloading];
 }
 
@@ -49,11 +51,10 @@
 }
 
 - (void)notifyTrackHasFinishedDownloading {
-    NSDictionary *downloadedTrackData = @{@"trackData" : downloadingSong};
 
     [[NSNotificationCenter defaultCenter] postNotificationName:TRACK_HAS_FINISHED_DOWNLOADING
-                                          object:self
-                                          userInfo:downloadedTrackData];
+                                                        object:self
+                                                      userInfo:@{@"trackData" : downloadingSong}];
 }
 
 @end

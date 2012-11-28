@@ -1,11 +1,9 @@
 #import "UCAppDelegate.h"
-#import "UCRemoteCall.h"
-#import "UCTrackPlayer.h"
 
 @implementation UCAppDelegate
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
-{
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(trackIsDownloading:) name:TRACK_IS_DOWNLOADING object:nil];
 }
 
 - (IBAction)findMixes:(id)sender {
@@ -31,6 +29,18 @@
 
 - (IBAction)playOrPause:(id)sender {
     [[UCTrackPlayer player] playOrPause];
+}
+
+- (void)trackIsDownloading:(NSNotification *)note {
+    [self updateDownloadingStatus:[[note userInfo] objectForKey:@"downloadProgress"]];
+}
+
+- (void)updateDownloadingStatus:(UCDownloadProgress *)progress {
+    if ([progress isComplete]) {
+        [_downloadingStatus setStringValue:@"Buffering complete"];
+    } else {
+        [_downloadingStatus setStringValue:[NSString stringWithFormat:@"Buffering: %d%%", [[progress value] integerValue]]];
+    }
 }
 
 @end
