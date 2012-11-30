@@ -1,5 +1,4 @@
 #import "UCTrackPlayer.h"
-#import "UCTrackDownloader.h"
 
 @implementation UCTrackPlayer {
     BOOL _isPlaying;
@@ -48,7 +47,6 @@ NSSound *soundPlayer = nil;
     [self initializeSoundPlayerWithTrackData:note];
     [self playDownloadedSong];
     [self defineTrackLengthFromDownloadedData];
-
 }
 
 - (void)defineTrackLengthFromDownloadedData {

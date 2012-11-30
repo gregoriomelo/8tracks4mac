@@ -6,6 +6,7 @@
     UCTrackPlayer *_player;
     UCToken *_token;
     UCMix *_currentMix;
+    UCTrackReporter *_trackReporter;
 }
 
 - (id)init {
@@ -45,6 +46,14 @@
 
     UCTrack *track = [_remoteCaller trackFromMix:mix withToken:_token];
     [_player startPlayingTrack:track];
+
+
+    [self initializeReporterOfTrack:track];
+}
+
+- (void)initializeReporterOfTrack:(UCTrack *)track {
+     _trackReporter = [UCTrackReporter initWithReport:[UCTrackReport initWithPlayToken:_token andMix:_currentMix andTrack:track] andRemoteCaller:[UCRemoteCaller new]];
+    [_trackReporter startReceivingNotifications];
 }
 
 - (void)resumeOrPause {

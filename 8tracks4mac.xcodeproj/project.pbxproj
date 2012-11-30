@@ -14,7 +14,9 @@
 		5DE8A892F179E69F38E9AC5F /* UCMixCoverImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE8ABA0ECF9C1277A3F4C18 /* UCMixCoverImages.m */; };
 		C17860E1C0E15299CCBE8660 /* UCToken.m in Sources */ = {isa = PBXBuildFile; fileRef = C17863F79CD7DA6F405DB202 /* UCToken.m */; };
 		C17862E2A3017A6037F66918 /* UCDownloadProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = C1786E110F10479084F26200 /* UCDownloadProgress.m */; };
+		C1786594DB04F2DA93BE4174 /* UCTrackReport.m in Sources */ = {isa = PBXBuildFile; fileRef = C1786A0F386377CCA1E1B24F /* UCTrackReport.m */; };
 		C1786B9749C1662CFB9ABD0D /* UCMixPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = C17867003C406FAC1C464129 /* UCMixPresenter.m */; };
+		C1786CBB429CC39D416A7444 /* UCTrackReporter.m in Sources */ = {isa = PBXBuildFile; fileRef = C1786FA830068D5BD3A6C348 /* UCTrackReporter.m */; };
 		C1786E1395CCE21C0CF48177 /* UCTrackDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = C1786A2A86E8A34D101A7E5B /* UCTrackDownloader.m */; };
 		C1786F021F0DE1304D14EB59 /* UCTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = C1786B1ECE78B2AC5AD9AB0E /* UCTrack.m */; };
 		C1786FC92CDAA9A75536DC82 /* UCTrackPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C17869E3C9F757677E8683AA /* UCTrackPlayer.m */; };
@@ -57,15 +59,19 @@
 		C1786223BDF29DEB0BED7D1A /* UCDownloadProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UCDownloadProgress.h; sourceTree = "<group>"; };
 		C178625AE132303233E1580B /* UCMixPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UCMixPresenter.h; sourceTree = "<group>"; };
 		C17863F79CD7DA6F405DB202 /* UCToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UCToken.m; sourceTree = "<group>"; };
+		C17865182A9382F0CAA736C4 /* UCTrackReport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UCTrackReport.h; sourceTree = "<group>"; };
 		C17867003C406FAC1C464129 /* UCMixPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UCMixPresenter.m; sourceTree = "<group>"; };
 		C17867051F3B5A939431A4EB /* UCTrackDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UCTrackDownloader.h; sourceTree = "<group>"; };
 		C17869E3C9F757677E8683AA /* UCTrackPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UCTrackPlayer.m; sourceTree = "<group>"; };
+		C1786A0F386377CCA1E1B24F /* UCTrackReport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UCTrackReport.m; sourceTree = "<group>"; };
 		C1786A2A86E8A34D101A7E5B /* UCTrackDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UCTrackDownloader.m; sourceTree = "<group>"; };
 		C1786B1ECE78B2AC5AD9AB0E /* UCTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UCTrack.m; sourceTree = "<group>"; };
 		C1786B261187946CED7006DD /* UCTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UCTrack.h; sourceTree = "<group>"; };
 		C1786DCC4CBF998584FBFBFB /* UCTrackPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UCTrackPlayer.h; sourceTree = "<group>"; };
 		C1786E110F10479084F26200 /* UCDownloadProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UCDownloadProgress.m; sourceTree = "<group>"; };
+		C1786E24B11283BEA13C0CA5 /* UCTrackReporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UCTrackReporter.h; sourceTree = "<group>"; };
 		C1786EB250CAA41FDE6363FB /* UCToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UCToken.h; sourceTree = "<group>"; };
+		C1786FA830068D5BD3A6C348 /* UCTrackReporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UCTrackReporter.m; sourceTree = "<group>"; };
 		F2CABBE71641C6F100ADE23B /* 8tracks4mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 8tracks4mac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2CABBEB1641C6F100ADE23B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		F2CABBEE1641C6F100ADE23B /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -195,6 +201,10 @@
 				C1786223BDF29DEB0BED7D1A /* UCDownloadProgress.h */,
 				C17867003C406FAC1C464129 /* UCMixPresenter.m */,
 				C178625AE132303233E1580B /* UCMixPresenter.h */,
+				C1786FA830068D5BD3A6C348 /* UCTrackReporter.m */,
+				C1786E24B11283BEA13C0CA5 /* UCTrackReporter.h */,
+				C1786A0F386377CCA1E1B24F /* UCTrackReport.m */,
+				C17865182A9382F0CAA736C4 /* UCTrackReport.h */,
 			);
 			path = 8tracks4mac;
 			sourceTree = "<group>";
@@ -357,6 +367,8 @@
 				C1786E1395CCE21C0CF48177 /* UCTrackDownloader.m in Sources */,
 				C17862E2A3017A6037F66918 /* UCDownloadProgress.m in Sources */,
 				C1786B9749C1662CFB9ABD0D /* UCMixPresenter.m in Sources */,
+				C1786CBB429CC39D416A7444 /* UCTrackReporter.m in Sources */,
+				C1786594DB04F2DA93BE4174 /* UCTrackReport.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

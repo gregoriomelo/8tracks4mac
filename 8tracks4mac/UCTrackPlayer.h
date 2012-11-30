@@ -1,6 +1,7 @@
 #import <Foundation/Foundation.h>
 #import "UCRemoteCaller.h"
 #import "UCToken.h"
+#import "UCTrackDownloader.h"
 
 @interface UCTrackPlayer : NSObject
 
