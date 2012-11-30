@@ -1,6 +1,7 @@
 #import <Foundation/Foundation.h>
 #import "UCRemoteCaller.h"
 #import "UCTrackPlayer.h"
+#import "UCTrackDownloader.h"
 #import "UCTrackReporter.h"
 #import "UCTrackReport.h"
 

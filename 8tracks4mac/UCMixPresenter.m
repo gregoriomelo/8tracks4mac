@@ -7,6 +7,7 @@
     UCToken *_token;
     UCMix *_currentMix;
     UCTrackReporter *_trackReporter;
+    UCTrack *_currentTrack;
 }
 
 - (id)init {
@@ -38,17 +39,31 @@
 }
 
 - (void)startPlayingMix:(UCMix *)mix {
+    _currentMix = mix;
+
     if (!_token) {
         _token = [_remoteCaller playToken];
     }
 
-    _currentMix = mix;
+    _currentTrack = [_remoteCaller trackFromMix:_currentMix withToken:_token];
 
-    UCTrack *track = [_remoteCaller trackFromMix:mix withToken:_token];
-    [_player startPlayingTrack:track];
+    [self startDownloadingTrack:_currentTrack];
+}
 
+- (void)startDownloadingTrack:(UCTrack *)track {
+    UCTrackDownloader *trackDownloader = [[UCTrackDownloader alloc] init];
 
-    [self initializeReporterOfTrack:track];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(trackHasFinishedDownloading:) name:TRACK_HAS_FINISHED_DOWNLOADING object:trackDownloader];
+
+    [trackDownloader downloadTrack:track];
+}
+
+- (void)trackHasFinishedDownloading:(NSNotification *)note {
+    [_player playTrackData:[[note userInfo] objectForKey:@"trackData"]];
+
+    [_currentTrack setLengthInSeconds:[_player currentTrackLength]];
+
+    [self initializeReporterOfTrack:_currentTrack];
 }
 
 - (void)initializeReporterOfTrack:(UCTrack *)track {
@@ -62,6 +77,9 @@
 
 - (void)skipCurrentSong {
     UCTrack *nextTrack = [_remoteCaller skipWithinMix:_currentMix withToken:_token];
-    [_player startPlayingTrack:nextTrack];
+
+    [self startDownloadingTrack:nextTrack];
+
+    _currentTrack = nextTrack;
 }
 @end

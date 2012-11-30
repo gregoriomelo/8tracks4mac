@@ -1,15 +1,12 @@
 #import <Foundation/Foundation.h>
-#import "UCRemoteCaller.h"
-#import "UCToken.h"
-#import "UCTrackDownloader.h"
 
 @interface UCTrackPlayer : NSObject
 
-@property(nonatomic, strong, readonly) UCTrack *currentTrack;
+@property(nonatomic, readonly) NSInteger currentTrackLength;
 
 + (UCTrackPlayer *)player;
 
-- (void)startPlayingTrack:(UCTrack *)track;
+- (void)playTrackData:(NSData *)trackData;
 - (void)resumeOrPause;
 
 @end
