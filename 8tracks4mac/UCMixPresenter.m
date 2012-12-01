@@ -87,7 +87,7 @@
 }
 
 - (void)hasChangedCurrentTime:(NSInteger)currentTime {
-
+    [[_ui message] setStringValue:[NSString stringWithFormat:@"%ld", currentTime]];
 }
 
 - (void)isPlaying {

@@ -1,7 +1,10 @@
 #import "UCTrackPlayer.h"
 
+static float const TIMER_TIME_INTERVAL = 0.5;
+
 @implementation UCTrackPlayer {
     BOOL _isPlaying;
+    BOOL mustKeepWatchingTimer;
 }
 
 static UCTrackPlayer *_player = nil;
@@ -46,7 +49,6 @@ NSSound *soundPlayer = nil;
 - (void)initializeSoundPlayerWithTrackData:(NSData *)trackData {
     if (soundPlayer) {
         [soundPlayer stop];
-        soundPlayer = nil;
     }
 
     soundPlayer = [[NSSound alloc] initWithData:trackData];
@@ -56,21 +58,49 @@ NSSound *soundPlayer = nil;
 - (void)playTrack {
     [soundPlayer play];
     _isPlaying = true;
+
+    mustKeepWatchingTimer = true;
+    [self startWatchingCurrentTime];
 }
 
 - (void)resumeOrPause {
     if (_isPlaying) {
-        [soundPlayer pause];
-        _isPlaying = false;
+        [self pause];
     } else {
-        [soundPlayer resume];
-        _isPlaying = true;
+        [self resume];
     }
+}
+
+- (void)resume {
+    [soundPlayer resume];
+    _isPlaying = true;
+    [self startWatchingCurrentTime];
+}
+
+- (void)pause {
+    [soundPlayer pause];
+    _isPlaying = false;
+    mustKeepWatchingTimer = false;
 }
 
 - (void)sound:(NSSound *)sound didFinishPlaying:(BOOL)isTrackFinishedPlaying {
     if (isTrackFinishedPlaying) {
         [_delegate hasFinishedPlaying];
+    }
+}
+
+- (void)startWatchingCurrentTime {
+    mustKeepWatchingTimer = true;
+    NSTimer *timer = [NSTimer timerWithTimeInterval:TIMER_TIME_INTERVAL target:self selector:@selector(updateCurrentTime:) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+    [timer fire];
+}
+
+- (void)updateCurrentTime:(NSTimer *)timer {
+    if (!mustKeepWatchingTimer) {
+        [timer invalidate];
+    } else if ([soundPlayer isPlaying]) {
+        [_delegate hasChangedCurrentTime:[[NSNumber numberWithDouble:[soundPlayer currentTime]] integerValue]];
     }
 }
 
