@@ -1509,7 +1509,7 @@
 							<object class="NSTextFieldCell" key="NSCell" id="47859039">
 								<int key="NSCellFlags">-1804599231</int>
 								<int key="NSCellFlags2">272630784</int>
-								<string key="NSContents"/>
+								<string key="NSContents">1002</string>
 								<reference key="NSSupport" ref="817003205"/>
 								<string key="NSCellIdentifier">_NS:9</string>
 								<reference key="NSControlView" ref="733105306"/>
@@ -1575,6 +1575,7 @@
 							<string key="NSFrame">{{251, 20}, {6, 17}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:1535</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="929248909">
