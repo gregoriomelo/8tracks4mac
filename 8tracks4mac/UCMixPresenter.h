@@ -7,7 +7,7 @@
 
 @class UCAppDelegate;
 
-@interface UCMixPresenter : NSObject <UCTrackDownloaderDelegate>
+@interface UCMixPresenter : NSObject <UCTrackDownloaderDelegate, UCTrackPlayerDelegate>
 
 @property(nonatomic, strong) UCTrackPlayer *player;
 

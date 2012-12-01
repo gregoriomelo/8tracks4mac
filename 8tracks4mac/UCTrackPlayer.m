@@ -46,9 +46,11 @@ NSSound *soundPlayer = nil;
 - (void)initializeSoundPlayerWithTrackData:(NSData *)trackData {
     if (soundPlayer) {
         [soundPlayer stop];
+        soundPlayer = nil;
     }
 
     soundPlayer = [[NSSound alloc] initWithData:trackData];
+    [soundPlayer setDelegate:self];
 }
 
 - (void)playTrack {
@@ -63,6 +65,12 @@ NSSound *soundPlayer = nil;
     } else {
         [soundPlayer resume];
         _isPlaying = true;
+    }
+}
+
+- (void)sound:(NSSound *)sound didFinishPlaying:(BOOL)isTrackFinishedPlaying {
+    if (isTrackFinishedPlaying) {
+        [_delegate hasFinishedPlaying];
     }
 }
 

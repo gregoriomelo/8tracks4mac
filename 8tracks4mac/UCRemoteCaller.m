@@ -61,6 +61,12 @@
 
 }
 
+- (UCTrack *)nextWithinMix:(UCMix *)mix withToken:(UCToken *)token {
+    NSString *trackURL = [NSString stringWithFormat:@"http://8tracks.com/sets/%ld/next.xml?mix_id=%ld", [token id], [mix id]];
+
+    return [self extractTrackFromURL:trackURL];
+}
+
 - (UCTrack *)skipWithinMix:(UCMix *)mix withToken:(UCToken *)token {
     NSString *trackURL = [NSString stringWithFormat:@"http://8tracks.com/sets/%ld/skip.xml?mix_id=%ld", [token id], [mix id]];
 

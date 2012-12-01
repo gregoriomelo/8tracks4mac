@@ -15,12 +15,12 @@
     self = [super init];
 
     _player = [UCTrackPlayer player];
+    [_player setDelegate:self];
 
     return self;
 }
 
 - (id)initWithRemoteCaller:(UCRemoteCaller *)remoteCaller andWindow:(UCAppDelegate *)ui {
-
     self = [self init];
 
     _remoteCaller = remoteCaller;
@@ -50,9 +50,10 @@
 }
 
 - (void)startDownloadingTrack:(UCTrack *)track {
+    _currentTrack = track;
+
     UCTrackDownloader *trackDownloader = [UCTrackDownloader new];
     [trackDownloader setDelegate:self];
-
     [trackDownloader downloadTrack:track];
 }
 
@@ -70,10 +71,10 @@
 
     [self startDownloadingTrack:nextTrack];
 
-    _currentTrack = nextTrack;
 }
 
 - (void)hasFinishedDownloadingTrack:(NSData *)trackData {
+    NSLog(@"Finished downloading song.");
     [_player playTrackData:trackData];
 
     [_currentTrack setLengthInSeconds:[_player currentTrackLength]];
@@ -83,6 +84,25 @@
 
 - (void)isDownloadingTrack:(UCDownloadProgress *)downloadProgress {
     [_ui updateDownloadingStatus:downloadProgress];
+}
+
+- (void)hasChangedCurrentTime:(NSInteger)currentTime {
+
+}
+
+- (void)isPlaying {
+
+}
+
+- (void)isPaused {
+
+}
+
+- (void)hasFinishedPlaying {
+    NSLog(@"Has finished playing.");
+    UCTrack *nextTrack = [_remoteCaller nextWithinMix:_currentMix withToken:_token];
+
+    [self startDownloadingTrack:nextTrack];
 }
 
 @end
