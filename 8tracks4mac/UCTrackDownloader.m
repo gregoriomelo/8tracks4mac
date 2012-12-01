@@ -43,18 +43,11 @@
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    [self notifyTrackHasFinishedDownloading];
+    [_delegate hasFinishedDownloadingTrack:downloadingSong];
 }
 
 - (void)connection:(NSURLConnection *) connection didFailWithError:(NSError *)error{
     NSLog(@"Error loading song: %@", error);
-}
-
-- (void)notifyTrackHasFinishedDownloading {
-
-    [[NSNotificationCenter defaultCenter] postNotificationName:TRACK_HAS_FINISHED_DOWNLOADING
-                                                        object:self
-                                                      userInfo:@{@"trackData" : downloadingSong}];
 }
 
 @end

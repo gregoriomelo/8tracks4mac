@@ -5,7 +5,7 @@
 #import "UCTrackReporter.h"
 #import "UCTrackReport.h"
 
-@interface UCMixPresenter : NSObject
+@interface UCMixPresenter : NSObject <UCTrackDownloaderDelegate>
 
 @property(nonatomic, strong) UCTrackPlayer *player;
 

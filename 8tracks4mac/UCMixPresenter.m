@@ -1,6 +1,5 @@
 #import "UCMixPresenter.h"
 
-
 @implementation UCMixPresenter {
     UCRemoteCaller *_remoteCaller;
     UCTrackPlayer *_player;
@@ -51,19 +50,12 @@
 }
 
 - (void)startDownloadingTrack:(UCTrack *)track {
-    UCTrackDownloader *trackDownloader = [[UCTrackDownloader alloc] init];
+    UCTrackDownloader *trackDownloader = [UCTrackDownloader new];
+    [trackDownloader setDelegate:self];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(trackHasFinishedDownloading:) name:TRACK_HAS_FINISHED_DOWNLOADING object:trackDownloader];
 
     [trackDownloader downloadTrack:track];
-}
-
-- (void)trackHasFinishedDownloading:(NSNotification *)note {
-    [_player playTrackData:[[note userInfo] objectForKey:@"trackData"]];
-
-    [_currentTrack setLengthInSeconds:[_player currentTrackLength]];
-
-    [self initializeReporterOfTrack:_currentTrack];
 }
 
 - (void)initializeReporterOfTrack:(UCTrack *)track {
@@ -82,4 +74,16 @@
 
     _currentTrack = nextTrack;
 }
+
+- (void)hasFinishedDownloadingTrack:(NSData *)trackData {
+    [_player playTrackData:trackData];
+
+    [_currentTrack setLengthInSeconds:[_player currentTrackLength]];
+
+    [self initializeReporterOfTrack:_currentTrack];
+}
+
+- (void)isDownloadingTrack:(UCDownloadProgress *)downloadProgress {
+}
+
 @end
