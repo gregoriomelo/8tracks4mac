@@ -5,11 +5,13 @@
 #import "UCTrackReporter.h"
 #import "UCTrackReport.h"
 
+@class UCAppDelegate;
+
 @interface UCMixPresenter : NSObject <UCTrackDownloaderDelegate>
 
 @property(nonatomic, strong) UCTrackPlayer *player;
 
-+ (id)initWithRemoteCaller:(UCRemoteCaller *)remoteCaller;
+- (id)initWithRemoteCaller:(UCRemoteCaller *)remoteCaller andWindow:(UCAppDelegate *)ui;
 - (NSString *)findMixesWithTag:(NSString *)tag1 andTag:(NSString *)tag2;
 - (UCMix *)detailsOfMix:(NSInteger)mixId;
 - (void)startPlayingMix:(UCMix *)mix;

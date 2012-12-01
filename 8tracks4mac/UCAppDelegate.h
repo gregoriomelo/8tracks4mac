@@ -19,4 +19,7 @@
 - (IBAction)resumeOrPause:(id)sender;
 - (IBAction)skipCurrentSong:(id)sender;
 
+- (void)updateDownloadingStatus:(UCDownloadProgress *)progress;
+
+
 @end

@@ -37,9 +37,7 @@
 
     NSNumber *rawProgress = [NSNumber numberWithFloat:(trackDataReceived / trackDataSize) * 100];
 
-    [[NSNotificationCenter defaultCenter] postNotificationName:TRACK_IS_DOWNLOADING
-                                                        object:self
-                                                      userInfo:@{@"downloadProgress" : [UCDownloadProgress initWithValue:rawProgress]}];
+    [_delegate isDownloadingTrack:[UCDownloadProgress initWithValue:rawProgress]];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {

@@ -1,4 +1,5 @@
 #import "UCMixPresenter.h"
+#import "UCAppDelegate.h"
 
 @implementation UCMixPresenter {
     UCRemoteCaller *_remoteCaller;
@@ -7,6 +8,7 @@
     UCMix *_currentMix;
     UCTrackReporter *_trackReporter;
     UCTrack *_currentTrack;
+    UCAppDelegate *_ui;
 }
 
 - (id)init {
@@ -17,16 +19,14 @@
     return self;
 }
 
-+ (id)initWithRemoteCaller:(UCRemoteCaller *)remoteCaller {
-    UCMixPresenter *mixPresenter = [[UCMixPresenter alloc] init];
+- (id)initWithRemoteCaller:(UCRemoteCaller *)remoteCaller andWindow:(UCAppDelegate *)ui {
 
-    [mixPresenter setRemoteCaller:remoteCaller];
+    self = [self init];
 
-    return mixPresenter;
-}
-
-- (void)setRemoteCaller:(UCRemoteCaller *)remoteCaller {
     _remoteCaller = remoteCaller;
+    _ui = ui;
+
+    return self;
 }
 
 - (NSString *)findMixesWithTag:(NSString *)tag1 andTag:(NSString *)tag2 {
@@ -52,8 +52,6 @@
 - (void)startDownloadingTrack:(UCTrack *)track {
     UCTrackDownloader *trackDownloader = [UCTrackDownloader new];
     [trackDownloader setDelegate:self];
-
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(trackHasFinishedDownloading:) name:TRACK_HAS_FINISHED_DOWNLOADING object:trackDownloader];
 
     [trackDownloader downloadTrack:track];
 }
@@ -84,6 +82,7 @@
 }
 
 - (void)isDownloadingTrack:(UCDownloadProgress *)downloadProgress {
+    [_ui updateDownloadingStatus:downloadProgress];
 }
 
 @end

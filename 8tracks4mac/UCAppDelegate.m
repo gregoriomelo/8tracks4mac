@@ -5,9 +5,7 @@
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(trackIsDownloading:) name:TRACK_IS_DOWNLOADING object:nil];
-
-    mixPresenter = [UCMixPresenter initWithRemoteCaller:[UCRemoteCaller new]];
+    mixPresenter = [[UCMixPresenter alloc] initWithRemoteCaller:[UCRemoteCaller new] andWindow:self];
 }
 
 - (IBAction)findMixes:(id)sender {
@@ -34,10 +32,6 @@
 
 - (IBAction)skipCurrentSong:(id)sender {
     [mixPresenter skipCurrentSong];
-}
-
-- (void)trackIsDownloading:(NSNotification *)note {
-    [self updateDownloadingStatus:[[note userInfo] objectForKey:@"downloadProgress"]];
 }
 
 - (void)updateDownloadingStatus:(UCDownloadProgress *)progress {
