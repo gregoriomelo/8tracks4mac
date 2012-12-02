@@ -104,4 +104,7 @@ NSSound *soundPlayer = nil;
     }
 }
 
+- (void)stop {
+    [soundPlayer stop];
+}
 @end

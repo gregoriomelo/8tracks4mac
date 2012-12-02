@@ -57,8 +57,9 @@
 }
 
 - (void)skipCurrentSong {
-    UCTrack *nextTrack = [_remoteCaller skipWithinMix:_currentMix withToken:_token];
+    [_player stop];
 
+    UCTrack *nextTrack = [_remoteCaller skipWithinMix:_currentMix withToken:_token];
     [self startDownloadingTrack:nextTrack];
 }
 

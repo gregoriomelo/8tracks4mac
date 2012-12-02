@@ -17,5 +17,6 @@
 - (void)playTrackData:(NSData *)trackData;
 - (void)resumeOrPause;
 - (void)sound:(NSSound *)sound didFinishPlaying:(BOOL)isTrackFinishedPlaying;
+- (void)stop;
 
 @end
