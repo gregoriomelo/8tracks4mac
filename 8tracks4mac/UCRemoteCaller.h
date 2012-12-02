@@ -2,6 +2,7 @@
 #import "UCMix.h"
 #import "UCTrack.h"
 #import "UCToken.h"
+#import "UCTrackReport.h"
 
 @interface UCRemoteCaller : NSObject
 
@@ -12,4 +13,7 @@
 - (UCTrack *)trackFromMix:(UCMix *)mix withToken:(UCToken *)token;
 - (UCTrack *)nextWithinMix:(UCMix *)mix withToken:(UCToken *)token;
 - (UCTrack *)skipWithinMix:(UCMix *)mix withToken:(UCToken *)token;
+- (void)report:(UCTrackReport *)report;
+
+
 @end

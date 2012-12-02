@@ -73,6 +73,12 @@
     return [self extractTrackFromURL:trackURL];
 }
 
+- (void)report:(UCTrackReport *)report {
+    NSString *reportURL = [NSString stringWithFormat:@"http://8tracks.com/sets/%ld/report.xml?track_id=%ld&mix_id=%ld", [[report track] id], [[report mix] id]];
+
+    (void) [self requestFor:reportURL];
+}
+
 - (UCTrack *)extractTrackFromURL:(NSString *)trackURL {
     RXMLElement *xmlRoot = [RXMLElement elementFromXMLData:[self requestFor:trackURL]];
 

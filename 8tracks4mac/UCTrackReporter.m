@@ -20,8 +20,8 @@
 
 - (void)reportIfNeeded:(UCTrackReport *)trackReport {
     if ([trackReport currentTime] >= _lastReportedTime + TIME_INTERVAL_FOR_EVERY_REPORT) {
-        NSLog(@"Reporting %@...", trackReport);
         _lastReportedTime = [trackReport currentTime];
+        [_remoteCaller report:trackReport];
     }
 }
 
