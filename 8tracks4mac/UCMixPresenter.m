@@ -7,23 +7,18 @@
     UCToken *_token;
     UCMix *_currentMix;
     UCTrackReporter *_trackReporter;
+    UCTrackReport *_currentTrackReport;
     UCTrack *_currentTrack;
     UCAppDelegate *_ui;
 }
 
-- (id)init {
+- (id)initWithWindow:(UCAppDelegate *)ui {
     self = [super init];
 
     _player = [UCTrackPlayer player];
     [_player setDelegate:self];
-
-    return self;
-}
-
-- (id)initWithRemoteCaller:(UCRemoteCaller *)remoteCaller andWindow:(UCAppDelegate *)ui {
-    self = [self init];
-
-    _remoteCaller = remoteCaller;
+    _remoteCaller = [UCRemoteCaller new];
+    _trackReporter = [[UCTrackReporter alloc] initWithRemoteCaller:_remoteCaller];
     _ui = ui;
 
     return self;
@@ -57,11 +52,6 @@
     [trackDownloader downloadTrack:track];
 }
 
-- (void)initializeReporterOfTrack:(UCTrack *)track {
-     _trackReporter = [UCTrackReporter initWithReport:[UCTrackReport initWithPlayToken:_token andMix:_currentMix andTrack:track] andRemoteCaller:[UCRemoteCaller new]];
-    [_trackReporter startReceivingNotifications];
-}
-
 - (void)resumeOrPause {
     [_player resumeOrPause];
 }
@@ -70,16 +60,14 @@
     UCTrack *nextTrack = [_remoteCaller skipWithinMix:_currentMix withToken:_token];
 
     [self startDownloadingTrack:nextTrack];
-
 }
 
 - (void)hasFinishedDownloadingTrack:(NSData *)trackData {
     NSLog(@"Finished downloading song.");
     [_player playTrackData:trackData];
-
     [_currentTrack setLengthInSeconds:[_player currentTrackLength]];
 
-    [self initializeReporterOfTrack:_currentTrack];
+    [self resetReporting];
 }
 
 - (void)isDownloadingTrack:(UCDownloadProgress *)downloadProgress {
@@ -88,6 +76,18 @@
 
 - (void)hasChangedCurrentTime:(NSInteger)currentTime {
     [[_ui message] setStringValue:[NSString stringWithFormat:@"%ld", currentTime]];
+
+    [self reportTrackIfNeeded:currentTime];
+}
+
+- (void)reportTrackIfNeeded:(NSInteger)currentTime {
+    if (!_currentTrackReport) {
+        _currentTrackReport = [[UCTrackReport alloc] initWithPlayToken:_token andMix:_currentMix andTrack:_currentTrack andCurrentTime:currentTime];
+    } else {
+       [_currentTrackReport setCurrentTime:currentTime];
+    }
+
+    [_trackReporter reportIfNeeded:_currentTrackReport];
 }
 
 - (void)isPlaying {
@@ -103,6 +103,11 @@
     UCTrack *nextTrack = [_remoteCaller nextWithinMix:_currentMix withToken:_token];
 
     [self startDownloadingTrack:nextTrack];
+}
+
+- (void)resetReporting {
+    [_trackReporter resetTimer];
+    _currentTrackReport = [[UCTrackReport alloc] initWithPlayToken:_token andMix:_currentMix andTrack:_currentTrack andCurrentTime:0];
 }
 
 @end

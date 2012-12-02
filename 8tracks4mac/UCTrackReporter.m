@@ -1,32 +1,31 @@
 #import "UCTrackReporter.h"
-#import "UCRemoteCaller.h"
-
 
 @implementation UCTrackReporter {
     UCRemoteCaller *_remoteCaller;
     long _lastReportedTime;
 }
 
-+ (id)initWithReport:(UCTrackReport *)trackReport andRemoteCaller:(UCRemoteCaller *)remoteCaller {
-    UCTrackReporter *trackReporter = [[UCTrackReporter alloc] init];
+- (id)initWithRemoteCaller:(UCRemoteCaller *)remoteCaller {
+    self = [super init];
 
-    [trackReporter setRemoteCaller:remoteCaller];
-    [trackReporter setLastReportedTime:0];
-
-    return trackReporter;
-}
-
-
-- (void)setRemoteCaller:(UCRemoteCaller *)remoteCaller {
     _remoteCaller = remoteCaller;
+    [self setLastReportedTime:0];
+
+    return self;
 }
 
 - (void)setLastReportedTime:(long)lastReportedTime {
     _lastReportedTime = lastReportedTime;
 }
 
-- (void)startReceivingNotifications {
-
+- (void)reportIfNeeded:(UCTrackReport *)trackReport {
+    if ([trackReport currentTime] >= _lastReportedTime + TIME_INTERVAL_FOR_EVERY_REPORT) {
+        NSLog(@"Reporting %@...", trackReport);
+        _lastReportedTime = [trackReport currentTime];
+    }
 }
 
+- (void)resetTimer {
+    _lastReportedTime = 0;
+}
 @end

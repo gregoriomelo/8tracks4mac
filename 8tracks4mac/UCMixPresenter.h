@@ -11,7 +11,7 @@
 
 @property(nonatomic, strong) UCTrackPlayer *player;
 
-- (id)initWithRemoteCaller:(UCRemoteCaller *)remoteCaller andWindow:(UCAppDelegate *)ui;
+- (id)initWithWindow:(UCAppDelegate *)ui;
 - (NSString *)findMixesWithTag:(NSString *)tag1 andTag:(NSString *)tag2;
 - (UCMix *)detailsOfMix:(NSInteger)mixId;
 - (void)startPlayingMix:(UCMix *)mix;

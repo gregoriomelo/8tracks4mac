@@ -1,28 +1,20 @@
 #import "UCTrackReport.h"
-#import "UCToken.h"
 
 @implementation UCTrackReport
 
-+ (id)initWithPlayToken:(UCToken *)token andMix:(UCMix *)mix andTrack:(UCTrack *)track {
-    UCTrackReport *trackReport = [UCTrackReport new];
+- (id)initWithPlayToken:(UCToken *)token andMix:(UCMix *)mix andTrack:(UCTrack *)track andCurrentTime:(NSInteger)currentTime {
+    self = [super init];
 
-    [trackReport setToken:token];
-    [trackReport setMix:mix];
-    [trackReport setTrack:track];
-
-    return trackReport;
-}
-
-- (void)setToken:(UCToken *)token {
     _token = token;
-}
-
-- (void)setMix:(UCMix *)mix {
     _mix = mix;
+    _track = track;
+    _currentTime = currentTime;
+
+    return self;
 }
 
-- (void)setTrack:(UCTrack *)track {
-    _track = track;
+- (NSString *)description {
+    return [NSString stringWithFormat:@"mix.id=%ld, track.id=%ld, track.currentTime=%ld", _mix.id, _track.id, _currentTime];
 }
 
 @end

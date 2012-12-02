@@ -2,11 +2,15 @@
 #import "UCRemoteCaller.h"
 #import "UCTrackReport.h"
 
+static int const TIME_INTERVAL_FOR_EVERY_REPORT = 30;
+
 @interface UCTrackReporter : NSObject
 
 @property UCTrackReport *trackReport;
 
-+ (id)initWithReport:(UCTrackReport *)trackReport andRemoteCaller:(UCRemoteCaller *)remoteCaller;
-- (void)startReceivingNotifications;
+- (id)initWithRemoteCaller:(UCRemoteCaller *)remoteCaller;
 
+- (void)reportIfNeeded:(UCTrackReport *)trackReport;
+
+- (void)resetTimer;
 @end

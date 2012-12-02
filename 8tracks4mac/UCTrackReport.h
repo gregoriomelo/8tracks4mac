@@ -8,7 +8,8 @@
 @property (weak, readonly) UCToken *token;
 @property (weak, readonly) UCMix *mix;
 @property (weak, readonly) UCTrack *track;
+@property NSInteger currentTime;
 
-+ (id)initWithPlayToken:(UCToken *)token andMix:(UCMix *)mix andTrack:(UCTrack *)track;
+- (id)initWithPlayToken:(UCToken *)token andMix:(UCMix *)mix andTrack:(UCTrack *)track andCurrentTime:(NSInteger)currentTime;
 
 @end

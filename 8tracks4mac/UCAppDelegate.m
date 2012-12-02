@@ -5,7 +5,7 @@
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    mixPresenter = [[UCMixPresenter alloc] initWithRemoteCaller:[UCRemoteCaller new] andWindow:self];
+    mixPresenter = [[UCMixPresenter alloc] initWithWindow:self];
 }
 
 - (IBAction)findMixes:(id)sender {
