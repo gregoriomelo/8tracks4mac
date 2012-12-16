@@ -2,7 +2,7 @@
 
 @interface UCAppController : NSObject
 
-@property NSView *topView;
-@property NSView *contentView;
+@property IBOutlet NSView *topView;
+@property IBOutlet NSView *contentView;
 
 @end
