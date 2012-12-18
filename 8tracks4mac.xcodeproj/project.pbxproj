@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		20DBA2BF167FF45100F225A0 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DBA2BE167FF45100F225A0 /* search.png */; };
+		20DBA2C2167FF52200F225A0 /* playing.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DBA2C1167FF52200F225A0 /* playing.png */; };
+		20DBA2C4167FF52800F225A0 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DBA2C3167FF52800F225A0 /* user.png */; };
 		20EB3B07167E0B180093CD03 /* UCTopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20EB3B05167E0B180093CD03 /* UCTopViewController.m */; };
 		20EB3B08167E0B180093CD03 /* UCTopViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20EB3B06167E0B180093CD03 /* UCTopViewController.xib */; };
 		20EB3B21167E0C380093CD03 /* UCContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20EB3B1F167E0C380093CD03 /* UCContentViewController.m */; };
@@ -19,7 +22,11 @@
 		C17860E1C0E15299CCBE8660 /* UCToken.m in Sources */ = {isa = PBXBuildFile; fileRef = C17863F79CD7DA6F405DB202 /* UCToken.m */; };
 		C17862E2A3017A6037F66918 /* UCDownloadProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = C1786E110F10479084F26200 /* UCDownloadProgress.m */; };
 		C1786594DB04F2DA93BE4174 /* UCTrackReport.m in Sources */ = {isa = PBXBuildFile; fileRef = C1786A0F386377CCA1E1B24F /* UCTrackReport.m */; };
+		C17866145C056A0D31293E0B /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = C17865796475C9DD4600AF8B /* play.png */; };
+		C17866FF99402FDE4EE6251C /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = C1786975EE7BD6DE7BBD124F /* pause.png */; };
+		C17867220C4619CC03BD6ABB /* skip.png in Resources */ = {isa = PBXBuildFile; fileRef = C17867BF31D467244DCEA061 /* skip.png */; };
 		C1786B9749C1662CFB9ABD0D /* UCMixPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = C17867003C406FAC1C464129 /* UCMixPresenter.m */; };
+		C1786C98F459FB621FF81A98 /* next.png in Resources */ = {isa = PBXBuildFile; fileRef = C1786C5CAA72657F762318E4 /* next.png */; };
 		C1786CBB429CC39D416A7444 /* UCTrackReporter.m in Sources */ = {isa = PBXBuildFile; fileRef = C1786FA830068D5BD3A6C348 /* UCTrackReporter.m */; };
 		C1786D2BFDF1926373524F81 /* UCAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = C17863434959091CAE1F44E5 /* UCAppController.m */; };
 		C1786E1395CCE21C0CF48177 /* UCTrackDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = C1786A2A86E8A34D101A7E5B /* UCTrackDownloader.m */; };
@@ -53,6 +60,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		20DBA2BE167FF45100F225A0 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
+		20DBA2C1167FF52200F225A0 /* playing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playing.png; sourceTree = "<group>"; };
+		20DBA2C3167FF52800F225A0 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
 		20EB3B04167E0B180093CD03 /* UCTopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UCTopViewController.h; sourceTree = "<group>"; };
 		20EB3B05167E0B180093CD03 /* UCTopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UCTopViewController.m; sourceTree = "<group>"; };
 		20EB3B06167E0B180093CD03 /* UCTopViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UCTopViewController.xib; sourceTree = "<group>"; };
@@ -73,13 +83,17 @@
 		C17863F79CD7DA6F405DB202 /* UCToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UCToken.m; sourceTree = "<group>"; };
 		C178643BB77B3B7648B8B3E8 /* UCAppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UCAppController.h; sourceTree = "<group>"; };
 		C17865182A9382F0CAA736C4 /* UCTrackReport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UCTrackReport.h; sourceTree = "<group>"; };
+		C17865796475C9DD4600AF8B /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
 		C17867003C406FAC1C464129 /* UCMixPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UCMixPresenter.m; sourceTree = "<group>"; };
 		C17867051F3B5A939431A4EB /* UCTrackDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UCTrackDownloader.h; sourceTree = "<group>"; };
+		C17867BF31D467244DCEA061 /* skip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = skip.png; sourceTree = "<group>"; };
+		C1786975EE7BD6DE7BBD124F /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause.png; sourceTree = "<group>"; };
 		C17869E3C9F757677E8683AA /* UCTrackPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UCTrackPlayer.m; sourceTree = "<group>"; };
 		C1786A0F386377CCA1E1B24F /* UCTrackReport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UCTrackReport.m; sourceTree = "<group>"; };
 		C1786A2A86E8A34D101A7E5B /* UCTrackDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UCTrackDownloader.m; sourceTree = "<group>"; };
 		C1786B1ECE78B2AC5AD9AB0E /* UCTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UCTrack.m; sourceTree = "<group>"; };
 		C1786B261187946CED7006DD /* UCTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UCTrack.h; sourceTree = "<group>"; };
+		C1786C5CAA72657F762318E4 /* next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = next.png; sourceTree = "<group>"; };
 		C1786DCC4CBF998584FBFBFB /* UCTrackPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UCTrackPlayer.h; sourceTree = "<group>"; };
 		C1786E110F10479084F26200 /* UCDownloadProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UCDownloadProgress.m; sourceTree = "<group>"; };
 		C1786E24B11283BEA13C0CA5 /* UCTrackReporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UCTrackReporter.h; sourceTree = "<group>"; };
@@ -144,6 +158,20 @@
 				5DE8AC7658A6908B93650E26 /* RXMLElement.m */,
 			);
 			path = RaptureXML;
+			sourceTree = "<group>";
+		};
+		C178604C6526CA18F9628ADD /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				20DBA2C3167FF52800F225A0 /* user.png */,
+				20DBA2C1167FF52200F225A0 /* playing.png */,
+				20DBA2BE167FF45100F225A0 /* search.png */,
+				C17867BF31D467244DCEA061 /* skip.png */,
+				C1786C5CAA72657F762318E4 /* next.png */,
+				C1786975EE7BD6DE7BBD124F /* pause.png */,
+				C17865796475C9DD4600AF8B /* play.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 		C1786E50744441C5CB95FF8C /* ViewControllers */ = {
@@ -247,6 +275,7 @@
 				F2CABBF91641C6F100ADE23B /* 8tracks4mac-Prefix.pch */,
 				F2CABBFA1641C6F100ADE23B /* Credits.rtf */,
 				F2CABC271641CDDB00ADE23B /* API_Key.plist */,
+				C178604C6526CA18F9628ADD /* Images */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -351,6 +380,13 @@
 				F2CABC281641CDDB00ADE23B /* API_Key.plist in Resources */,
 				20EB3B08167E0B180093CD03 /* UCTopViewController.xib in Resources */,
 				20EB3B22167E0C380093CD03 /* UCContentViewController.xib in Resources */,
+				C17867220C4619CC03BD6ABB /* skip.png in Resources */,
+				C1786C98F459FB621FF81A98 /* next.png in Resources */,
+				C17866FF99402FDE4EE6251C /* pause.png in Resources */,
+				C17866145C056A0D31293E0B /* play.png in Resources */,
+				20DBA2BF167FF45100F225A0 /* search.png in Resources */,
+				20DBA2C2167FF52200F225A0 /* playing.png in Resources */,
+				20DBA2C4167FF52800F225A0 /* user.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
